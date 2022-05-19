@@ -23,11 +23,19 @@ public class MainActivity extends AppCompatActivity {
     private TextView zero;
     private TextView ca;
     private TextView plus;
+    private TextView minus;
+    private TextView multiply;
+    private TextView divide;
+    private TextView equal;
 
-    private TextView result;
+    private TextView resultBox;
 
     String newValue = "0";
     String oldValue = "0";
+
+    int result;
+
+    String calculateSign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
         zero = findViewById(R.id.zero);
         ca = findViewById(R.id.ca);
         plus = findViewById(R.id.plus);
-        result = findViewById(R.id.result);
+        minus = findViewById(R.id.minus);
+        multiply = findViewById(R.id.multiply);
+        divide = findViewById(R.id.divide);
+        resultBox = findViewById(R.id.result);
 
         System.out.println("initData 메서드 호출");
     }
@@ -61,8 +72,13 @@ public class MainActivity extends AppCompatActivity {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newValue = newValue + "1";
-                result.setText(newValue);
+                if(resultBox.getText().equals("0")) {
+                    resultBox.setText("1");
+                } else {
+                    oldValue = resultBox.getText().toString();
+                    newValue = oldValue + "1";
+                    resultBox.setText(newValue);
+                }
                 Log.d("MY TAG", "one 클릭!!!!");
             }
         });
@@ -70,70 +86,106 @@ public class MainActivity extends AppCompatActivity {
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newValue = newValue + "2";
-                result.setText(newValue);
+                if(resultBox.getText().equals("0")) {
+                    resultBox.setText("2");
+                } else {
+                    oldValue = resultBox.getText().toString();
+                    newValue = oldValue + "2";
+                    resultBox.setText(newValue);
+                }
                 Log.d("MY TAG", "two 클릭!!!!");
             }
         });
 
         // 람다 표현식
         three.setOnClickListener(view -> {
-            newValue = newValue + "3";
-            result.setText(newValue);
+            if(resultBox.getText().equals("0")) {
+                resultBox.setText("3");
+            } else {
+                oldValue = resultBox.getText().toString();
+                newValue = oldValue + "3";
+                resultBox.setText(newValue);
+            }
           Log.d(TAG, "three 클릭 !!!!");
         });
 
         four.setOnClickListener(view -> {
-            newValue = newValue + "4";
-            result.setText(newValue);
+            if(resultBox.getText().equals("0")) {
+                resultBox.setText("4");
+            } else {
+                oldValue = resultBox.getText().toString();
+                newValue = oldValue + "4";
+                resultBox.setText(newValue);
+            }
             Log.d(TAG, "four 클릭 !!!!");
         });
 
         five.setOnClickListener(view -> {
-            newValue = newValue + "5";
-            result.setText(newValue);
+            if(resultBox.getText().equals("0")) {
+                resultBox.setText("5");
+            } else {
+                oldValue = resultBox.getText().toString();
+                newValue = oldValue + "5";
+                resultBox.setText(newValue);
+            }
             Log.d(TAG, "five 클릭 !!!!");
         });
 
         six.setOnClickListener(view -> {
-            newValue = newValue + "6";
-            result.setText(newValue);
+            if(resultBox.getText().equals("0")) {
+                resultBox.setText("6");
+            } else {
+                oldValue = resultBox.getText().toString();
+                newValue = oldValue + "6";
+                resultBox.setText(newValue);
+            }
             Log.d(TAG, "six 클릭 !!!!");
         });
 
         seven.setOnClickListener(view -> {
-            newValue = newValue + "7";
-            result.setText(newValue);
+            if(resultBox.getText().equals("0")) {
+                resultBox.setText("7");
+            } else {
+                oldValue = resultBox.getText().toString();
+                newValue = oldValue + "7";
+                resultBox.setText(newValue);
+            }
             Log.d(TAG, "seven 클릭 !!!!");
         });
 
         eight.setOnClickListener(view -> {
-            newValue = newValue + "8";
-            result.setText(newValue);
+            if(resultBox.getText().equals("0")) {
+                resultBox.setText("8");
+            } else {
+                oldValue = resultBox.getText().toString();
+                newValue = oldValue + "8";
+                resultBox.setText(newValue);
+            }
             Log.d(TAG, "eight 클릭 !!!!");
         });
 
         nine.setOnClickListener(view -> {
             newValue = newValue + "9";
-            result.setText(newValue);
+            resultBox.setText(newValue);
             Log.d(TAG, "nine 클릭 !!!!");
         });
 
         zero.setOnClickListener(view -> {
             newValue = newValue + "0";
-            result.setText(newValue);
+            resultBox.setText(newValue);
             Log.d(TAG, "zero 클릭 !!!!");
         });
 
         ca.setOnClickListener(view -> {
             newValue = "0";
             oldValue = "0";
-            result.setText("0");
+            resultBox.setText("0");
             Log.d(TAG, "ca 클릭 !!!!");
         });
 
         plus.setOnClickListener(view -> {
-            // 1. (newValue = 1)
+
+            oldValue = resultBox.getText().toString();
 
             int number1 = Integer.parseInt(oldValue);
             int number2 = Integer.parseInt(newValue);
@@ -144,9 +196,46 @@ public class MainActivity extends AppCompatActivity {
 
             oldValue = String.valueOf(sum);
             newValue = "0";
-            result.setText(oldValue);
+            resultBox.setText(oldValue);
+
+            calculateSign = "+";
 
             Log.d(TAG, "plus 클릭 !!!!");
+        });
+
+        minus.setOnClickListener(view -> {
+
+        });
+
+        multiply.setOnClickListener(view -> {
+
+        });
+
+        divide.setOnClickListener(view -> {
+
+        });
+
+        equal.setOnClickListener(view -> {
+
+            switch (calculateSign) {
+                case "+" :
+
+                    break;
+                case "-" :
+
+                    break;
+                case "x" :
+
+                    break;
+                case "/" :
+
+                    break;
+                case "=" :
+
+                    break;
+            }
+
+
         });
     }
 }

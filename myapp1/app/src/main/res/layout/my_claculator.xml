@@ -2,9 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="10dp"
-    android:paddingTop="20dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,13 +104,13 @@
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/plus"
+            android:id="@+id/multiply"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#657AEA"
             android:gravity="center"
-            android:text="+"
+            android:text="X"
             android:textSize="30dp" />
 
     </LinearLayout>
@@ -153,15 +151,63 @@
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/zero"
+            android:id="@+id/minus"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#5FA7E1"
             android:gravity="center"
-            android:text="0"
+            android:text="-"
             android:textSize="30dp" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/zero"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#94C7EF"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/divide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#5FA7E1"
+            android:gravity="center"
+            android:text="/"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/plus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#94C7EF"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/equal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#5FA7E1"
+            android:gravity="center"
+            android:text="="
+            android:textSize="30dp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
