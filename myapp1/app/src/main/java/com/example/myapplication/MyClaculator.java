@@ -33,7 +33,6 @@ public class MyClaculator implements ICalc {
         result = number1 * number2;
         resultText = String.valueOf(result);
         return resultText;
-
     }
 
     @Override
@@ -43,6 +42,5 @@ public class MyClaculator implements ICalc {
         result = number1 / number2;
         resultText = String.valueOf(result);
         return resultText;
-
     }
 }

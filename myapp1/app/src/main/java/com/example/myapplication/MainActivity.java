@@ -184,10 +184,12 @@ public class MainActivity extends AppCompatActivity {
 
         zero.setOnClickListener(view -> {
             if (!(newValue.equals("0"))) {
-                oldValue = String.valueOf(resultBox.getText());
+                oldValue = newValue;
                 newValue = oldValue + "0";
             }
             resultBox.setText(newValue);
+            Log.d(TAG, "oldValue : " + oldValue);
+            Log.d(TAG, "newValue : " + newValue);
             Log.d(TAG, "zero 클릭 !!!!");
         });
 
@@ -258,5 +260,4 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
 }
