@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "TAG";
 
-    private MyClaculator myClaculator;
+    private MyCalculator myCalculator;
 
     private TextView one;
     private TextView two;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        myClaculator = new MyClaculator();
+        myCalculator = new MyCalculator();
 
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
@@ -220,16 +220,16 @@ public class MainActivity extends AppCompatActivity {
         equal.setOnClickListener(view -> {
 
             if (addCheck) {
-                resultValue = myClaculator.add(oldValue, newValue);
+                resultValue = myCalculator.add(oldValue, newValue);
                 addCheck = false;
             } else if (subCheck) {
-                resultValue = myClaculator.subtract(oldValue, newValue);
+                resultValue = myCalculator.subtract(oldValue, newValue);
                 subCheck = false;
             } else if (mulCheck) {
-                resultValue = myClaculator.multiply(oldValue, newValue);
+                resultValue = myCalculator.multiply(oldValue, newValue);
                 mulCheck = false;
             } else if (divCheck) {
-                resultValue = myClaculator.divide(oldValue, newValue);
+                resultValue = myCalculator.divide(oldValue, newValue);
                 divCheck = false;
             }
             Log.d(TAG, "oldValue : " + oldValue);

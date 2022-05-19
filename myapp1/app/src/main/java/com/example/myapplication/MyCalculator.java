@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-public class MyClaculator implements ICalc {
+public class MyCalculator implements ICalc {
 
     private int number1;
     private int number2;
