@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView resultBox;
 
-    private boolean plusCheck;
-    private boolean minusCheck;
-    private boolean multiplyCheck;
-    private boolean divideCheck;
+    private boolean addCheck;
+    private boolean subCheck;
+    private boolean mulCheck;
+    private boolean divCheck;
 
     private String newValue = "0";
     private String oldValue = "0";
@@ -49,11 +49,10 @@ public class MainActivity extends AppCompatActivity {
         addEventListener();
     }
 
-    // 호출시 스택 메모리에 올라갔다 사라진다
     private void initData() {
         myClaculator = new MyClaculator();
 
-        one = findViewById(R.id.one); // 주소값을 담는 것
+        one = findViewById(R.id.one);
         two = findViewById(R.id.two);
         three = findViewById(R.id.three);
         four = findViewById(R.id.four);
@@ -82,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 if (newValue.equals("0")) {
                     newValue = "1";
                 } else {
-                    oldValue = String.valueOf(resultBox.getText());
-                    newValue = oldValue + "1";
+                    newValue = newValue + "1";
                 }
                 resultBox.setText(newValue);
                 Log.d("MY TAG", "one 클릭!!!!");
@@ -96,8 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 if (newValue.equals("0")) {
                     newValue = "2";
                 } else {
-                    oldValue = String.valueOf(resultBox.getText());
-                    newValue = oldValue + "2";
+                    newValue = newValue + "2";
                 }
                 resultBox.setText(newValue);
                 Log.d("MY TAG", "two 클릭!!!!");
@@ -109,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
             if (newValue.equals("0")) {
                 newValue = "3";
             } else {
-                oldValue = String.valueOf(resultBox.getText());
-                newValue = oldValue + "3";
+                newValue = newValue + "3";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "three 클릭 !!!!");
@@ -120,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
             if (newValue.equals("0")) {
                 newValue = "4";
             } else {
-                oldValue = String.valueOf(resultBox.getText());
-                newValue = oldValue + "4";
+                newValue = newValue + "4";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "four 클릭 !!!!");
@@ -131,8 +126,7 @@ public class MainActivity extends AppCompatActivity {
             if (newValue.equals("0")) {
                 newValue = "5";
             } else {
-                oldValue = String.valueOf(resultBox.getText());
-                newValue = oldValue + "5";
+                newValue = newValue + "5";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "five 클릭 !!!!");
@@ -142,8 +136,7 @@ public class MainActivity extends AppCompatActivity {
             if (newValue.equals("0")) {
                 newValue = "6";
             } else {
-                oldValue = String.valueOf(resultBox.getText());
-                newValue = oldValue + "6";
+                newValue = newValue + "6";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "six 클릭 !!!!");
@@ -153,8 +146,7 @@ public class MainActivity extends AppCompatActivity {
             if (newValue.equals("0")) {
                 newValue = "7";
             } else {
-                oldValue = String.valueOf(resultBox.getText());
-                newValue = oldValue + "7";
+                newValue = newValue + "7";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "seven 클릭 !!!!");
@@ -164,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
             if (newValue.equals("0")) {
                 newValue = "8";
             } else {
-                oldValue = String.valueOf(resultBox.getText());
-                newValue = oldValue + "8";
+                newValue = newValue + "8";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "eight 클릭 !!!!");
@@ -175,8 +166,7 @@ public class MainActivity extends AppCompatActivity {
             if (newValue.equals("0")) {
                 newValue = "9";
             } else {
-                oldValue = String.valueOf(resultBox.getText());
-                newValue = oldValue + "9";
+                newValue = newValue + "9";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "nine 클릭 !!!!");
@@ -184,8 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
         zero.setOnClickListener(view -> {
             if (!(newValue.equals("0"))) {
-                oldValue = newValue;
-                newValue = oldValue + "0";
+                newValue = newValue + "0";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "oldValue : " + oldValue);
@@ -201,28 +190,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(view -> {
-            plusCheck = true;
+            addCheck = true;
             oldValue = String.valueOf(resultBox.getText());
             newValue = "0";
             Log.d(TAG, "plus 클릭 !!!!");
         });
 
         minus.setOnClickListener(view -> {
-            minusCheck = true;
+            subCheck = true;
             oldValue = String.valueOf(resultBox.getText());
             newValue = "0";
             Log.d(TAG, "minus 클릭 !!!!");
         });
 
         multiply.setOnClickListener(view -> {
-            multiplyCheck = true;
+            mulCheck = true;
             oldValue = String.valueOf(resultBox.getText());
             newValue = "0";
             Log.d(TAG, "multiply 클릭 !!!!");
         });
 
         divide.setOnClickListener(view -> {
-            divideCheck = true;
+            divCheck = true;
             oldValue = String.valueOf(resultBox.getText());
             newValue = "0";
             Log.d(TAG, "divide 클릭 !!!!");
@@ -230,31 +219,23 @@ public class MainActivity extends AppCompatActivity {
 
         equal.setOnClickListener(view -> {
 
-            if (plusCheck) {
+            if (addCheck) {
                 resultValue = myClaculator.add(oldValue, newValue);
-                Log.d(TAG, "oldValue : " + oldValue);
-                Log.d(TAG, "newValue : " + newValue);
-                Log.d(TAG, "resultValue : " + resultValue);
-                plusCheck = false;
-            } else if (minusCheck) {
+                addCheck = false;
+            } else if (subCheck) {
                 resultValue = myClaculator.subtract(oldValue, newValue);
-                Log.d(TAG, "oldValue : " + oldValue);
-                Log.d(TAG, "newValue : " + newValue);
-                Log.d(TAG, "resultValue : " + resultValue);
-                minusCheck = false;
-            } else if (multiplyCheck) {
+                subCheck = false;
+            } else if (mulCheck) {
                 resultValue = myClaculator.multiply(oldValue, newValue);
-                Log.d(TAG, "oldValue : " + oldValue);
-                Log.d(TAG, "newValue : " + newValue);
-                Log.d(TAG, "resultValue : " + resultValue);
-                multiplyCheck = false;
-            } else if (divideCheck) {
+                mulCheck = false;
+            } else if (divCheck) {
                 resultValue = myClaculator.divide(oldValue, newValue);
-                Log.d(TAG, "oldValue : " + oldValue);
-                Log.d(TAG, "newValue : " + newValue);
-                Log.d(TAG, "resultValue : " + resultValue);
-                divideCheck = false;
+                divCheck = false;
             }
+            Log.d(TAG, "oldValue : " + oldValue);
+            Log.d(TAG, "newValue : " + newValue);
+            Log.d(TAG, "resultValue : " + resultValue);
+
             newValue = "0";
             resultBox.setText(resultValue);
 
