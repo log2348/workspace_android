@@ -43,4 +43,5 @@ public class MyClaculator implements ICalc {
         resultText = String.valueOf(result);
         return resultText;
     }
+
 }
