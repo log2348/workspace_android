@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+        src="" 경로 (@ <- 경로를 의미한다)
+        (폴더 구조가 복잡하기 때문에 편하게 쓰라고 만들어 준 것)
+
+        해상도 존재
+        저해상도 이미지
+        중간해상도 이미지
+        고해상도 이미지
+    -->
+
+    <ImageView
+        android:src="@drawable/ic_launcher_background"
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:background="@color/black"
+        android:src="@drawable/abc"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/abc"
+        app:civ_border_width="3dp"
+        app:civ_border_color="#4A4A4A"/>
+
+</LinearLayout>
