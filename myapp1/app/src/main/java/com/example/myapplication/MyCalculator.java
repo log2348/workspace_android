@@ -43,5 +43,4 @@ public class MyCalculator implements ICalc {
         resultText = String.valueOf(result);
         return resultText;
     }
-
 }

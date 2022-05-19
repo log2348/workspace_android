@@ -236,8 +236,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "newValue : " + newValue);
             Log.d(TAG, "resultValue : " + resultValue);
 
-            newValue = "0";
             resultBox.setText(resultValue);
+            newValue = "0";
+            // 연산자 클릭 안 하고 = 클릭하는 경우 ??
 
         });
     }
