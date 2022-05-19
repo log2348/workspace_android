@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean mulCheck;
     private boolean divCheck;
 
+    private String calculateSign = null;
+
     private String newValue = "0";
     private String oldValue = "0";
     private String resultValue = null;
@@ -190,28 +192,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(view -> {
-            addCheck = true;
-            oldValue = String.valueOf(resultBox.getText());
-            newValue = "0";
+            //TODO 연산 많아질 때
+            if(calculateSign != null) {
+
+            } else {
+                calculateSign = "+";
+                oldValue = String.valueOf(resultBox.getText());
+                newValue = "0";
+            }
             Log.d(TAG, "plus 클릭 !!!!");
         });
 
         minus.setOnClickListener(view -> {
-            subCheck = true;
+            calculateSign = "-";
             oldValue = String.valueOf(resultBox.getText());
             newValue = "0";
             Log.d(TAG, "minus 클릭 !!!!");
         });
 
         multiply.setOnClickListener(view -> {
-            mulCheck = true;
+            calculateSign = "*";
             oldValue = String.valueOf(resultBox.getText());
             newValue = "0";
             Log.d(TAG, "multiply 클릭 !!!!");
         });
 
         divide.setOnClickListener(view -> {
-            divCheck = true;
+            calculateSign = "/";
             oldValue = String.valueOf(resultBox.getText());
             newValue = "0";
             Log.d(TAG, "divide 클릭 !!!!");
@@ -219,26 +226,28 @@ public class MainActivity extends AppCompatActivity {
 
         equal.setOnClickListener(view -> {
 
-            if (addCheck) {
-                resultValue = myCalculator.add(oldValue, newValue);
-                addCheck = false;
-            } else if (subCheck) {
-                resultValue = myCalculator.subtract(oldValue, newValue);
-                subCheck = false;
-            } else if (mulCheck) {
-                resultValue = myCalculator.multiply(oldValue, newValue);
-                mulCheck = false;
-            } else if (divCheck) {
-                resultValue = myCalculator.divide(oldValue, newValue);
-                divCheck = false;
+            switch (calculateSign) {
+                case "+" :
+                    resultValue = myCalculator.add(oldValue, newValue);
+                    break;
+                case "-" :
+                    resultValue = myCalculator.subtract(oldValue, newValue);
+                    break;
+                case "*" :
+                    resultValue = myCalculator.multiply(oldValue, newValue);
+                    break;
+                case "/" :
+                    resultValue = myCalculator.divide(oldValue, newValue);
+                    break;
             }
+
             Log.d(TAG, "oldValue : " + oldValue);
             Log.d(TAG, "newValue : " + newValue);
             Log.d(TAG, "resultValue : " + resultValue);
 
             resultBox.setText(resultValue);
             newValue = "0";
-            // 연산자 클릭 안 하고 = 클릭하는 경우 ??
+            calculateSign = null;
 
         });
     }
