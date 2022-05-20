@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--    noactionbar -->
+    <!--    반응형을 가장 잘 적용할 수 있는 게 Constraint Layout -->
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#009688"
+        android:gravity="center|start"
+        android:paddingStart="20dp"
+        android:text="Raze Galactic"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/spaceStation"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/space_station_icon"
+        app:layout_constraintEnd_toStartOf="@id/rocket"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <ImageView
+        android:id="@+id/rocket"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/rocket_icon"
+        app:layout_constraintEnd_toStartOf="@id/rover"
+        app:layout_constraintStart_toEndOf="@id/spaceStation"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <ImageView
+        android:id="@+id/rover"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/rover_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rocket"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <TextView
+        android:id="@+id/spaceStationText"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:text="Space Stations"
+        app:layout_constraintEnd_toEndOf="@id/spaceStation"
+        app:layout_constraintStart_toStartOf="@id/spaceStation"
+        app:layout_constraintTop_toBottomOf="@id/spaceStation" />
+
+    <TextView
+        android:id="@+id/flightText"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:text="Flights"
+        app:layout_constraintEnd_toEndOf="@id/rocket"
+        app:layout_constraintStart_toStartOf="@id/rocket"
+        app:layout_constraintTop_toBottomOf="@id/rocket" />
+
+
+    <TextView
+        android:id="@+id/roverText"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:text="Rovers"
+        app:layout_constraintEnd_toEndOf="@id/rover"
+        app:layout_constraintStart_toStartOf="@id/rover"
+        app:layout_constraintTop_toBottomOf="@id/rover" />
+
+    <TextView
+        android:id="@+id/dca"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:background="#009688"
+        android:gravity="center"
+        android:paddingEnd="30dp"
+        android:text="DCA"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flightText" />
+
+    <TextView
+        android:id="@+id/mars"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="60dp"
+        android:background="#009688"
+        android:gravity="center"
+        android:paddingStart="30dp"
+        android:text="MARS"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/roverText" />
+
+    <ImageView
+        android:id="@+id/arrows"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/double_arrows"
+        app:layout_constraintBottom_toBottomOf="@id/mars"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/dca" />
+
+    <Switch
+        android:id="@+id/switchBtn"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#FF5722"
+        android:paddingStart="5dp"
+        android:text="One Way"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dca" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:background="#FF5722"
+        android:gravity="center"
+        android:text="1 Traveller"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/switchBtn"
+        app:layout_constraintTop_toBottomOf="@id/switchBtn" />
+
+    <ImageView
+        android:id="@+id/galaxy"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="180dp"
+        android:src="@drawable/galaxy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/rocket_icon"
+        app:layout_constraintBottom_toBottomOf="@id/galaxy"
+        app:layout_constraintEnd_toStartOf="@id/galaxy"
+        app:layout_constraintTop_toTopOf="@id/galaxy" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="15dp"
+        android:background="#009688"
+        android:gravity="center"
+        android:text="DEPART"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
