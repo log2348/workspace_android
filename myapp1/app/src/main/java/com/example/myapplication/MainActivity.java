@@ -11,8 +11,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "TAG";
 
-    private MyCalculator myCalculator;
-
     private TextView one;
     private TextView two;
     private TextView three;
@@ -47,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        myCalculator = new MyCalculator();
 
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
@@ -73,109 +70,43 @@ public class MainActivity extends AppCompatActivity {
     private void addEventListener() {
 
         one.setOnClickListener(view -> {
-            if (!newValue.equals("0")) {
-                if (newValue.length() == 0) {
-                    newValue = "1";
-                } else {
-                    newValue = newValue + "1";
-                }
-            }
-            resultBox.setText(newValue);
-            Log.d("MY TAG", "one 클릭!!!!");
+            appendNumber(one);
         });
 
         two.setOnClickListener(view -> {
-            if (!newValue.equals("0")) {
-                if (newValue.length() == 0) {
-                    newValue = "2";
-                } else {
-                    newValue = newValue + "2";
-                }
-            }
-            resultBox.setText(newValue);
-            Log.d("MY TAG", "two 클릭!!!!");
+            appendNumber(two);
         });
 
         three.setOnClickListener(view -> {
-            if (newValue.length() == 0) {
-                newValue = "3";
-            } else {
-                newValue = newValue + "3";
-            }
-            resultBox.setText(newValue);
-            Log.d(TAG, "three 클릭 !!!!");
+            appendNumber(three);
         });
 
         four.setOnClickListener(view -> {
-            if (newValue.length() == 0) {
-                newValue = "4";
-            } else {
-                newValue = newValue + "4";
-            }
-            resultBox.setText(newValue);
-            Log.d(TAG, "four 클릭 !!!!");
+            appendNumber(four);
         });
 
         five.setOnClickListener(view -> {
-            if (newValue.length() == 0) {
-                newValue = "5";
-            } else {
-                newValue = newValue + "5";
-            }
-            resultBox.setText(newValue);
-            Log.d(TAG, "five 클릭 !!!!");
+            appendNumber(five);
         });
 
         six.setOnClickListener(view -> {
-            if (newValue.length() == 0) {
-                newValue = "6";
-            } else {
-                newValue = newValue + "6";
-            }
-            resultBox.setText(newValue);
-            Log.d(TAG, "six 클릭 !!!!");
+            appendNumber(six);
         });
 
         seven.setOnClickListener(view -> {
-            if (newValue.length() == 0) {
-                newValue = "7";
-            } else {
-                newValue = newValue + "7";
-            }
-            resultBox.setText(newValue);
-            Log.d(TAG, "seven 클릭 ");
+            appendNumber(seven);
         });
 
         eight.setOnClickListener(view -> {
-            if (newValue.length() == 0) {
-                newValue = "8";
-            } else {
-                newValue = newValue + "8";
-            }
-            resultBox.setText(newValue);
-            Log.d(TAG, "eight 클릭 !!!!");
+            appendNumber(eight);
         });
 
         nine.setOnClickListener(view -> {
-            if (newValue.length() == 0) {
-                newValue = "9";
-            } else {
-                newValue = newValue + "9";
-            }
-            resultBox.setText(newValue);
-            Log.d(TAG, "nine 클릭 !!!!");
+            appendNumber(nine);
         });
 
         zero.setOnClickListener(view -> {
-            if (!(newValue.length() == 0)) {
-                newValue = newValue + "0";
-            } else {
-                newValue = "0";
-            }
-            resultBox.setText(newValue);
-            Log.d(TAG, "oldValue : " + oldValue);
-            Log.d(TAG, "newValue : " + newValue);
-            Log.d(TAG, "zero 클릭 !!!!");
+            appendNumber(zero);
         });
 
         ca.setOnClickListener(view -> {
@@ -186,88 +117,103 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(view -> {
-            if (!newValue.equals("")) {
-                resultValue = myCalculator.add(oldValue, newValue);
-                oldValue = resultValue;
-            } else {
-                oldValue = newValue;
+            if (calculateSign != null) {
+                /*
+                    만약 = 연산이 안 일어난 채로 5 * 5 까지의 값이 담겨있으면
+                    그까지의 계산 결과를 내서 oldValue에 담고
+                    그 값에서 다시 더하기 연산을 해야 한다.
+                 */
+                checkCalcSign(oldValue, newValue);
             }
-            newValue = "";
             calculateSign = "+";
-            resultBox.setText(resultValue);
-
-            Log.d(TAG, "oldValue : " + oldValue);
-            Log.d(TAG, "newValue : " + newValue);
-            Log.d(TAG, "resultValue : " + resultValue);
-            Log.d(TAG, "plus 클릭 !!!!");
+            checkCalcSign(oldValue, newValue);
         });
 
         minus.setOnClickListener(view -> {
-            if (!oldValue.equals("")) {
-                resultValue = myCalculator.subtract(oldValue, newValue);
-                oldValue = resultValue;
-                resultBox.setText(resultValue);
-            } else {
-                oldValue = newValue;
+            if (calculateSign != null) {
+                checkCalcSign(oldValue, newValue);
             }
-            newValue = "";
             calculateSign = "-";
-
-            Log.d(TAG, "minus 클릭 !!!!");
+            checkCalcSign(oldValue, newValue);
         });
 
         multiply.setOnClickListener(view -> {
-            if (!oldValue.equals("")) {
-                resultValue = myCalculator.multiply(oldValue, newValue);
-                oldValue = resultValue;
-                resultBox.setText(resultValue);
-            } else {
-                oldValue = newValue;
+            if (calculateSign != null) {
+                checkCalcSign(oldValue, newValue);
             }
-            newValue = "";
             calculateSign = "*";
-
-            Log.d(TAG, "multiply 클릭 !!!!");
+            checkCalcSign(oldValue, newValue);
         });
 
         divide.setOnClickListener(view -> {
-            if (!oldValue.equals("")) {
-                resultValue = myCalculator.divide(oldValue, newValue);
-                oldValue = resultValue;
-            } else {
-                oldValue = newValue;
+            if (calculateSign != null) {
+                checkCalcSign(oldValue, newValue);
             }
-            newValue = "";
             calculateSign = "/";
-            resultBox.setText(resultValue);
-
-            Log.d(TAG, "divide 클릭 !!!!");
+            checkCalcSign(oldValue, newValue);
         });
 
         equal.setOnClickListener(view -> {
-            switch (calculateSign) {
-                case "+":
-                    resultValue = myCalculator.add(oldValue, newValue);
-                    break;
-                case "-":
-                    resultValue = myCalculator.subtract(oldValue, newValue);
-                    break;
-                case "*":
-                    resultValue = myCalculator.multiply(oldValue, newValue);
-                    break;
-                case "/":
-                    resultValue = myCalculator.divide(oldValue, newValue);
-                    break;
-            }
-            Log.d(TAG, "oldValue : " + oldValue);
-            Log.d(TAG, "newValue : " + newValue);
-            Log.d(TAG, "resultValue : " + resultValue);
-
-            resultBox.setText(resultValue);
-            oldValue = resultValue;
-            newValue = "0";
-            calculateSign = null;
+            checkCalcSign(oldValue, newValue);
+            calculateSign = "";
+            /*
+                = 연산 후 다른 기호를 누르면 최종 값에서 이어서 연산이 되고
+                부호 클릭 안하고 숫자를 클릭하면 이전 결과값은 사라지고
+                그때부터 클릭하는 숫자부터 처음 계산이 된다
+             */
         });
+
+    }
+
+    private void appendNumber(TextView number) {
+        if (newValue.equals("0") || newValue.equals("")) {
+            newValue = number.getText().toString();
+        } else {
+            newValue = newValue + number.getText().toString();
+        }
+        resultBox.setText(newValue);
+        Log.d(TAG, number.getText() + " 클릭!!!!");
+    }
+
+
+    private void checkCalcSign(String oldNum, String newNum) {
+
+        Log.d(TAG, "연산자 : " + calculateSign);
+        Log.d(TAG, "oldValue : " + oldValue);
+        Log.d(TAG, "newValue : " + newValue);
+
+        if (!newValue.equals("")) {
+            if (!oldValue.equals("")) {
+                // old new 둘 다 값이 담겨 있으면
+                int number1 = Integer.parseInt(oldNum);
+                int number2 = Integer.parseInt(newNum);
+                int result = 0;
+
+                switch (calculateSign) {
+                    case "+":
+                        result = number1 + number2;
+                        break;
+                    case "-":
+                        result = number1 - number2;
+                        break;
+                    case "*":
+                        result = number1 * number2;
+                        break;
+                    case "/":
+                        result = number1 / number2;
+                        break;
+                }
+                // 연산 결과는 old 값에 담아준다
+                resultValue = String.valueOf(result);
+                oldValue = resultValue;
+                resultBox.setText(oldValue);
+            } else {
+                // old가 비어있으면 new 값을 담아줌
+                oldValue = newValue;
+            }
+        }
+        newValue = "";
+
     }
 
 }
