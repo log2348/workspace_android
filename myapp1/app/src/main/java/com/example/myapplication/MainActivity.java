@@ -32,16 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView resultBox;
 
-    private boolean addCheck;
-    private boolean subCheck;
-    private boolean mulCheck;
-    private boolean divCheck;
-
     private String calculateSign = null;
 
-    private String newValue = "0";
-    private String oldValue = "0";
-    private String resultValue = null;
+    private String newValue = "";
+    private String oldValue = "";
+    private String resultValue = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,40 +67,37 @@ public class MainActivity extends AppCompatActivity {
         equal = findViewById(R.id.equal);
         resultBox = findViewById(R.id.result);
 
-        System.out.println("initData 메서드 호출"); // 안드로이드에서는 sysout 거의 안 씀
+        System.out.println("initData 메서드 호출");
     }
 
     private void addEventListener() {
-        // 익명 구현 객체
-        one.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (newValue.equals("0")) {
+
+        one.setOnClickListener(view -> {
+            if (!newValue.equals("0")) {
+                if (newValue.length() == 0) {
                     newValue = "1";
                 } else {
                     newValue = newValue + "1";
                 }
-                resultBox.setText(newValue);
-                Log.d("MY TAG", "one 클릭!!!!");
             }
+            resultBox.setText(newValue);
+            Log.d("MY TAG", "one 클릭!!!!");
         });
 
-        two.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (newValue.equals("0")) {
+        two.setOnClickListener(view -> {
+            if (!newValue.equals("0")) {
+                if (newValue.length() == 0) {
                     newValue = "2";
                 } else {
                     newValue = newValue + "2";
                 }
-                resultBox.setText(newValue);
-                Log.d("MY TAG", "two 클릭!!!!");
             }
+            resultBox.setText(newValue);
+            Log.d("MY TAG", "two 클릭!!!!");
         });
 
-        // 람다 표현식
         three.setOnClickListener(view -> {
-            if (newValue.equals("0")) {
+            if (newValue.length() == 0) {
                 newValue = "3";
             } else {
                 newValue = newValue + "3";
@@ -115,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         four.setOnClickListener(view -> {
-            if (newValue.equals("0")) {
+            if (newValue.length() == 0) {
                 newValue = "4";
             } else {
                 newValue = newValue + "4";
@@ -125,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         five.setOnClickListener(view -> {
-            if (newValue.equals("0")) {
+            if (newValue.length() == 0) {
                 newValue = "5";
             } else {
                 newValue = newValue + "5";
@@ -135,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         six.setOnClickListener(view -> {
-            if (newValue.equals("0")) {
+            if (newValue.length() == 0) {
                 newValue = "6";
             } else {
                 newValue = newValue + "6";
@@ -145,17 +137,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         seven.setOnClickListener(view -> {
-            if (newValue.equals("0")) {
+            if (newValue.length() == 0) {
                 newValue = "7";
             } else {
                 newValue = newValue + "7";
             }
             resultBox.setText(newValue);
-            Log.d(TAG, "seven 클릭 !!!!");
+            Log.d(TAG, "seven 클릭 ");
         });
 
         eight.setOnClickListener(view -> {
-            if (newValue.equals("0")) {
+            if (newValue.length() == 0) {
                 newValue = "8";
             } else {
                 newValue = newValue + "8";
@@ -165,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         nine.setOnClickListener(view -> {
-            if (newValue.equals("0")) {
+            if (newValue.length() == 0) {
                 newValue = "9";
             } else {
                 newValue = newValue + "9";
@@ -175,8 +167,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         zero.setOnClickListener(view -> {
-            if (!(newValue.equals("0"))) {
+            if (!(newValue.length() == 0)) {
                 newValue = newValue + "0";
+            } else {
+                newValue = "0";
             }
             resultBox.setText(newValue);
             Log.d(TAG, "oldValue : " + oldValue);
@@ -185,70 +179,95 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ca.setOnClickListener(view -> {
-            newValue = "0";
-            oldValue = "0";
-            resultBox.setText(newValue);
+            oldValue = "";
+            newValue = "";
+            resultBox.setText("0");
             Log.d(TAG, "ca 클릭 !!!!");
         });
 
         plus.setOnClickListener(view -> {
-            //TODO 연산 많아질 때
-            if(calculateSign != null) {
-
+            if (!newValue.equals("")) {
+                resultValue = myCalculator.add(oldValue, newValue);
+                oldValue = resultValue;
             } else {
-                calculateSign = "+";
-                oldValue = String.valueOf(resultBox.getText());
-                newValue = "0";
+                oldValue = newValue;
             }
+            newValue = "";
+            calculateSign = "+";
+            resultBox.setText(resultValue);
+
+            Log.d(TAG, "oldValue : " + oldValue);
+            Log.d(TAG, "newValue : " + newValue);
+            Log.d(TAG, "resultValue : " + resultValue);
             Log.d(TAG, "plus 클릭 !!!!");
         });
 
         minus.setOnClickListener(view -> {
+            if (!oldValue.equals("")) {
+                resultValue = myCalculator.subtract(oldValue, newValue);
+                oldValue = resultValue;
+                resultBox.setText(resultValue);
+            } else {
+                oldValue = newValue;
+            }
+            newValue = "";
             calculateSign = "-";
-            oldValue = String.valueOf(resultBox.getText());
-            newValue = "0";
+
             Log.d(TAG, "minus 클릭 !!!!");
         });
 
         multiply.setOnClickListener(view -> {
+            if (!oldValue.equals("")) {
+                resultValue = myCalculator.multiply(oldValue, newValue);
+                oldValue = resultValue;
+                resultBox.setText(resultValue);
+            } else {
+                oldValue = newValue;
+            }
+            newValue = "";
             calculateSign = "*";
-            oldValue = String.valueOf(resultBox.getText());
-            newValue = "0";
+
             Log.d(TAG, "multiply 클릭 !!!!");
         });
 
         divide.setOnClickListener(view -> {
+            if (!oldValue.equals("")) {
+                resultValue = myCalculator.divide(oldValue, newValue);
+                oldValue = resultValue;
+            } else {
+                oldValue = newValue;
+            }
+            newValue = "";
             calculateSign = "/";
-            oldValue = String.valueOf(resultBox.getText());
-            newValue = "0";
+            resultBox.setText(resultValue);
+
             Log.d(TAG, "divide 클릭 !!!!");
         });
 
         equal.setOnClickListener(view -> {
-
             switch (calculateSign) {
-                case "+" :
+                case "+":
                     resultValue = myCalculator.add(oldValue, newValue);
                     break;
-                case "-" :
+                case "-":
                     resultValue = myCalculator.subtract(oldValue, newValue);
                     break;
-                case "*" :
+                case "*":
                     resultValue = myCalculator.multiply(oldValue, newValue);
                     break;
-                case "/" :
+                case "/":
                     resultValue = myCalculator.divide(oldValue, newValue);
                     break;
             }
-
             Log.d(TAG, "oldValue : " + oldValue);
             Log.d(TAG, "newValue : " + newValue);
             Log.d(TAG, "resultValue : " + resultValue);
 
             resultBox.setText(resultValue);
+            oldValue = resultValue;
             newValue = "0";
             calculateSign = null;
-
         });
     }
+
 }
