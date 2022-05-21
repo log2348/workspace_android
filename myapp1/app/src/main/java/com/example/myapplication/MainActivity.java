@@ -157,16 +157,16 @@ public class MainActivity extends AppCompatActivity {
             checkCalcSign(oldValue, newValue);
             calculateSign = "";
             /*
-                = 연산 후 다른 기호를 누르면 최종 값에서 이어서 연산이 되고
+                = 클릭 후 다른 기호를 누르면 최종 값에서 이어서 연산이 되고
                 부호 클릭 안하고 숫자를 클릭하면 이전 결과값은 사라지고
-                그때부터 클릭하는 숫자부터 처음 계산이 된다
+                그때부터 클릭하는 숫자부터 처음 계산이 되어야 한다.
              */
         });
 
     }
 
     private void appendNumber(TextView number) {
-        if (newValue.equals("0") || newValue.equals("")) {
+        if (newValue.equals("0")) {
             newValue = number.getText().toString();
         } else {
             newValue = newValue + number.getText().toString();
