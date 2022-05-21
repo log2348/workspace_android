@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private String oldValue = "";
     private String resultValue = "";
 
+    private boolean resetCalc = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
         equal.setOnClickListener(view -> {
             checkCalcSign(oldValue, newValue);
             calculateSign = "";
+
+            resetCalc = true;
             /*
                 = 클릭 후 다른 기호를 누르면 최종 값에서 이어서 연산이 되고
                 부호 클릭 안하고 숫자를 클릭하면 이전 결과값은 사라지고
@@ -169,6 +173,10 @@ public class MainActivity extends AppCompatActivity {
         if (newValue.equals("0")) {
             newValue = number.getText().toString();
         } else {
+            if(resetCalc) {
+                oldValue = "";
+                resetCalc = false;
+            }
             newValue = newValue + number.getText().toString();
         }
         resultBox.setText(newValue);
@@ -211,8 +219,8 @@ public class MainActivity extends AppCompatActivity {
                 // old가 비어있으면 new 값을 담아줌
                 oldValue = newValue;
             }
+            newValue = "";
         }
-        newValue = "";
 
     }
 
