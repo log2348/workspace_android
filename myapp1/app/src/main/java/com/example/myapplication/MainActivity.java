@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView resultBox;
 
-    private String calculateSign = null;
+    private String calculateSign = "";
 
     private String newValue = "";
     private String oldValue = "";
@@ -119,9 +119,11 @@ public class MainActivity extends AppCompatActivity {
 
         plus.setOnClickListener(view -> {
 
-            if (calculateSign != null) {
+            if (!calculateSign.equals("")) {
                 /*
-                    만약 = 부호를 클릭 안하고 5 * 5 까지의 값이 담겨있으면
+                    만약 5 * 5 까지 입력한 상태라고 가정할 때
+                    = 기호를 클릭 하지 않고
+                    다른 연산 기호를 클릭해서 계속 연산을 이어가려면
                     그까지의 계산 결과를 내서 oldValue에 담고
                     그 값에서 다음 연산을 해야 한다.
                  */
@@ -133,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         minus.setOnClickListener(view -> {
-            if (calculateSign != null) {
+            if (!calculateSign.equals("")) {
                 checkCalcSign(oldValue, newValue);
             }
             calculateSign = "-";
@@ -141,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         multiply.setOnClickListener(view -> {
-            if (calculateSign != null) {
+            if (!calculateSign.equals("")) {
                 checkCalcSign(oldValue, newValue);
             }
             calculateSign = "*";
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         divide.setOnClickListener(view -> {
-            if (calculateSign != null) {
+            if (!calculateSign.equals("")) {
                 checkCalcSign(oldValue, newValue);
             }
             calculateSign = "/";
@@ -157,14 +159,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         equal.setOnClickListener(view -> {
-            if (calculateSign != null) {
+            if (!calculateSign.equals("")) {
                 checkCalcSign(oldValue, newValue);
                 resetCalc = true;
                 calculateSign = "";
             }
             /*
-                = 클릭 후 다른 기호를 누르면 최종 값에서 이어서 연산이 되고
-                연산 기호 클릭 안하고 숫자를 클릭하면 이전 결과값은 사라지고
+                = 클릭 후 다른 연산 기호를 클릭하면 최종 값에서 이어서 연산이 되고
+                연산 기호 클릭 안 하고 숫자를 클릭하면 이전 결과값은 사라지고
                 그때부터 클릭하는 숫자부터 처음 계산이 되어야 한다. (oldValue값 리셋)
              */
         });
