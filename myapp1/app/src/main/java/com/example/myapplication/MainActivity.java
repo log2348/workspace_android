@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String newValue = "";
     private String oldValue = "";
-    private String resultValue = "";
 
     private boolean resetCalc = false;
 
@@ -119,14 +118,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(view -> {
+
             if (calculateSign != null) {
                 /*
-                    만약 = 연산이 안 일어난 채로 5 * 5 까지의 값이 담겨있으면
+                    만약 = 부호를 클릭 안하고 5 * 5 까지의 값이 담겨있으면
                     그까지의 계산 결과를 내서 oldValue에 담고
-                    그 값에서 다시 더하기 연산을 해야 한다.
+                    그 값에서 다음 연산을 해야 한다.
                  */
                 checkCalcSign(oldValue, newValue);
             }
+
             calculateSign = "+";
             checkCalcSign(oldValue, newValue);
         });
@@ -156,14 +157,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         equal.setOnClickListener(view -> {
-            checkCalcSign(oldValue, newValue);
-            calculateSign = "";
-
-            resetCalc = true;
+            if (calculateSign != null) {
+                checkCalcSign(oldValue, newValue);
+                resetCalc = true;
+                calculateSign = "";
+            }
             /*
                 = 클릭 후 다른 기호를 누르면 최종 값에서 이어서 연산이 되고
-                부호 클릭 안하고 숫자를 클릭하면 이전 결과값은 사라지고
-                그때부터 클릭하는 숫자부터 처음 계산이 되어야 한다.
+                연산 기호 클릭 안하고 숫자를 클릭하면 이전 결과값은 사라지고
+                그때부터 클릭하는 숫자부터 처음 계산이 되어야 한다. (oldValue값 리셋)
              */
         });
 
@@ -173,10 +175,10 @@ public class MainActivity extends AppCompatActivity {
         if (newValue.equals("0")) {
             newValue = number.getText().toString();
         } else {
-            if(resetCalc) {
+            if(resetCalc && calculateSign.equals("")) {
                 oldValue = "";
-                resetCalc = false;
             }
+            resetCalc = false;
             newValue = newValue + number.getText().toString();
         }
         resultBox.setText(newValue);
@@ -212,8 +214,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 // 연산 결과는 old 값에 담아준다
-                resultValue = String.valueOf(result);
-                oldValue = resultValue;
+                oldValue = String.valueOf(result);
                 resultBox.setText(oldValue);
             } else {
                 // old가 비어있으면 new 값을 담아줌
