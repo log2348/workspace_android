@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- View가 눌러졌을 때 #5C5C5C 색상으로 출력한다.-->
+    <item android:drawable="@drawable/number_radius_pressed" android:state_pressed="true" />
+    <item android:drawable="@drawable/number_radius" android:state_pressed="false"/>
+
+</selector>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- View가 눌러졌을 때 -->
+    <item android:drawable="@drawable/ca_radius_pressed" android:state_pressed="true" />
+    <!-- View가 눌러지지 않았을 때 -->
+    <item android:drawable="@drawable/ca_radius"/>
+
+</selector>
