@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">mybmi_02</string>
+    <string name="str_bmi">BMI 계산기</string>
+    <string name="content_description_end_icon">heart</string>
+</resources>
