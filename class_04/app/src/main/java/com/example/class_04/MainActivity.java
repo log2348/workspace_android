@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         // 상속 객체의 onCreate() 메서드 호출
         super.onCreate(savedInstanceState);
 
-        // 화면을 xml파일로 그려준다 (activity)
+        // 화면을 xml파일로 그려준다 (activity_01)
         // 처음에 화면을 그리는 것은 단 한번만 그려준다.
         setContentView(R.layout.activity_main);
 
