@@ -15,7 +15,7 @@ public class BmiResultActivity extends AppCompatActivity {
         if(getIntent() != null) {
             // 값 받기
             int height = getIntent().getIntExtra("height", 0);
-            int weight = getIntent().getIntExtra("Weight", 0);
+            int weight = getIntent().getIntExtra("weight", 0);
 
             // BMI - 체중 (kg) / 신장 * 신장 (m) (단위 주의)
             double bmiValue = weight / Math.pow(height / 100.0, 2); // pow - 제곱수

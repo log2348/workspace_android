@@ -28,9 +28,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEventListener() {
-        String weight = weightText.getText().toString();
-        Intent intent = new Intent(this, BmiResultActivity.class);
-        intent.putExtra("weight", weight);
-        startActivity(intent);
+
+        confirmBtn.setOnClickListener(view -> {
+            // 값 넘겨주기
+            String height = String.valueOf(heightText.getText());
+            String weight = String.valueOf(weightText.getText());
+
+            Intent intent = new Intent(this, BmiResultActivity.class);
+            intent.putExtra("height", height);
+            intent.putExtra("weight", weight);
+            startActivity(intent);
+
+        });
+
     }
 }

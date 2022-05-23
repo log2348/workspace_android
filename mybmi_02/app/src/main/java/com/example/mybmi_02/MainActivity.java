@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             Editable heightEditable = heightEt.getEditText().getText();
 
             if(weightEditable.length() < 1 || heightEditable.length() < 1) {
-                Toast.makeText(this, "빈 값이 있습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "빈 값이 있습니다.", Toast.LENGTH_SHORT).show(); // long shot 떠있는 시간
                 return;
             }
 
