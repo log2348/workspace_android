@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        weightText = findViewById(R.id.weightText);
-        heightText = findViewById(R.id.heightText);
+        weightText = findViewById(R.id.weightTxt);
+        heightText = findViewById(R.id.heightTxt);
         confirmBtn =  findViewById(R.id.confirmBtn);
     }
 
