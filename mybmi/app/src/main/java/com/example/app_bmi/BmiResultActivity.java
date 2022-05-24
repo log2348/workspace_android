@@ -10,7 +10,8 @@ import android.widget.TextView;
 public class BmiResultActivity extends AppCompatActivity {
 
     private static final String TAG = "TAG";
-    private TextView bmiResult;
+    private TextView bmiText;
+    private TextView bmiResultText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,41 +23,44 @@ public class BmiResultActivity extends AppCompatActivity {
 
     private void returnBmi() {
 
-        bmiResult = findViewById(R.id.bmi);
+        bmiText = findViewById(R.id.bmi);
+        bmiResultText = findViewById(R.id.resultText);
 
-        if(getIntent() != null) {
+        if (getIntent() != null) {
 
             // 값 받기
             int height = getIntent().getIntExtra("height", 0);
             int weight = getIntent().getIntExtra("weight", 0);
 
             double bmi = weight / Math.pow(height / 100.0, 2);
+            double formatBmi = Double.parseDouble(String.format("%.2f", bmi)); // 소수 첫째 자리까지 표현
             String resultText = "";
 
             Log.d(TAG, "bmi : " + bmi);
 
-            if(bmi < 18.5) {
+            if (formatBmi < 18.5) {
                 resultText = "저체중";
-                bmiResult.setTextColor(Color.rgb(255, 255, 255));
+                bmiResultText.setTextColor(Color.YELLOW);
                 Log.d(TAG, "resultText : " + resultText);
-            } else if(bmi > 18.6 && bmi < 24.9) {
+            } else if (formatBmi > 18.6 && formatBmi < 24.9) {
                 resultText = "표준";
-                bmiResult.setTextColor(Color.rgb(0, 0, 255));
+                bmiResultText.setTextColor(Color.GREEN);
                 Log.d(TAG, "resultText : " + resultText);
-            } else if(bmi > 23.0 && bmi < 24.9) {
+            } else if (formatBmi > 23.0 && formatBmi < 24.9) {
                 resultText = "과체중";
-                bmiResult.setTextColor(Color.rgb(255, 102, 51));
+                bmiResultText.setTextColor(Color.YELLOW);
                 Log.d(TAG, "resultText : " + resultText);
-            } else if(bmi > 25.0 && bmi < 29.9) {
+            } else if (formatBmi > 25.0 && formatBmi < 29.9) {
                 resultText = "중도비만";
-                bmiResult.setTextColor(Color.rgb(255, 102, 51));
+                bmiResultText.setTextColor(Color.RED);
                 Log.d(TAG, "resultText : " + resultText);
             } else {
                 resultText = "고도비만";
-                bmiResult.setTextColor(Color.rgb(255, 0, 0));
+                bmiResultText.setTextColor(Color.RED);
                 Log.d(TAG, "resultText : " + resultText);
             }
-            bmiResult.setText(resultText);
+            bmiText.setText(String.valueOf(formatBmi));
+            bmiResultText.setText(resultText);
         }
     }
 
