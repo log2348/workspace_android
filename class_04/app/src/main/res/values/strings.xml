@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">앱의 이름</string>
+    <string name="app_name">My Application</string>
     <string name="str_sub_activity">SUB ACTIVITY</string>
     <string name="str_temp1">화면전환</string>
 </resources>

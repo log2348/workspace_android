@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">mybmi</string>
+    <string name="str_height">신장 (cm)</string>
+    <string name="str_weight">체중 (kg)</string>
+    <string name="str_title_bmi">BMI 계산기</string>
 </resources>

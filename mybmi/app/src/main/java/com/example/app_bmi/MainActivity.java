@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText weightText;
-    private EditText heightText;
+    private TextInputLayout weightText;
+    private TextInputLayout heightText;
     private Button confirmBtn;
 
     @Override
@@ -30,15 +34,26 @@ public class MainActivity extends AppCompatActivity {
     private void addEventListener() {
 
         confirmBtn.setOnClickListener(view -> {
-            // 값 넘겨주기
-            String height = String.valueOf(heightText.getText());
-            String weight = String.valueOf(weightText.getText());
+            Editable heightEditable = heightText.getEditText().getText();
+            Editable weightEditable = weightText.getEditText().getText();
 
-            Intent intent = new Intent(this, BmiResultActivity.class);
-            intent.putExtra("height", height);
-            intent.putExtra("weight", weight);
-            startActivity(intent);
+            if(heightEditable.length() < 1 || weightEditable.length() < 1) {
+                Toast.makeText(this, "빈 칸이 있습니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
+            try {
+                int height = Integer.parseInt(heightEditable.toString());
+                int weight = Integer.parseInt(weightEditable.toString());
+
+                // 값 넘겨주기
+                Intent intent = new Intent(this, BmiResultActivity.class);
+                intent.putExtra("height", height);
+                intent.putExtra("weight", weight);
+                startActivity(intent);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "잘못 입력하셨습니다.", Toast.LENGTH_SHORT).show();
+            }
         });
 
     }

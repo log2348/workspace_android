@@ -32,14 +32,16 @@
                 android:id="@+id/heightTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/label">
+                android:hint="@string/str_height"
+                app:startIconContentDescription="height"
+                app:startIconDrawable="@drawable/ic_baseline_check_24">
 
                 <!-- inputType - 입력할 수 있는 데이터타입 제한해서 오류 방지 -->
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,12 +55,14 @@
                 android:id="@+id/weightTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/label">
+                android:hint="@string/str_weight"
+                app:startIconContentDescription="height"
+                app:startIconDrawable="@drawable/ic_baseline_check_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

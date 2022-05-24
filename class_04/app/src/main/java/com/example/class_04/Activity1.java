@@ -36,7 +36,7 @@ public class Activity1 extends AppCompatActivity {
         okBtn.setOnClickListener(View -> {
             /*
                 1. 현재 nameEditText 뷰 컴포넌트에 값을 가져 온다. (방어적코드)
-                2. 화면 전환 로직 (인탠트)
+                2. 화면 전환 로직 (인텐트)
              */
             String name = nameEditText.getText().toString();
             Intent intent = new Intent(this, Activity2.class);
