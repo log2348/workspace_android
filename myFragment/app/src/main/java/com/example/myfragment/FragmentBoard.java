@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentOne extends Fragment {
+public class FragmentBoard extends Fragment {
 
     private static final String TAG = "FragmentOne";
     // 실행흐름
@@ -25,11 +25,11 @@ public class FragmentOne extends Fragment {
         Log.d(TAG, "onAttach 호출");
     }
 
-    public FragmentOne() {
+    public FragmentBoard() {
     }
 
-    public static FragmentOne newInstance() {
-        FragmentOne fragment = new FragmentOne();
+    public static FragmentBoard newInstance() {
+        FragmentBoard fragment = new FragmentBoard();
         return fragment;
     }
 
@@ -43,7 +43,7 @@ public class FragmentOne extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView 호출");
-        return inflater.inflate(R.layout.fragment_one, container, false);
+        return inflater.inflate(R.layout.fragment_board, container, false);
     }
 
     // 뷰가 완전 메모리에 올라가게 되면 호출

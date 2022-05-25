@@ -20,7 +20,7 @@
     -->
     <fragment
         android:id="@+id/fragmentOne"
-        android:name="com.example.myfragment.FragmentOne"
+        android:name="com.example.myfragment.FragmentBoard"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 

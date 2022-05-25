@@ -1,53 +1,60 @@
 package com.example.myfragment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 public class BottomNavigation extends AppCompatActivity {
-
-    private FragmentHome fragmentHome;
-    private FragmentInfo fragmentInfo;
-
-    private ImageView menuHome;
-    private ImageView menuBoard;
-    private ImageView menuLocation;
-    private ImageView menuChat;
-    private ImageView menuInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
+    }
 
-        menuHome = findViewById(R.id.home);
-        menuBoard = findViewById(R.id.board);
-        menuLocation = findViewById(R.id.location);
-        menuChat = findViewById(R.id.chat);
-        menuInfo = findViewById(R.id.info);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_tab, menu);
+        return true;
+    }
 
-        // 프래그먼트 동적으로 만들기
-        menuHome.setOnClickListener(view -> {
-            FragmentManager manager = getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-        });
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        menuInfo.setOnClickListener(view -> {
-            fragmentInfo = new FragmentInfo();
+        Fragment fragment;
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
 
-            FragmentManager manager = getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
+        switch (item.getItemId()) {
+            case R.id.homeIcon:
+                fragment = new FragmentHome();
+                transaction.replace(R.id.container, fragment);
+                transaction.commit();
+                Log.d("TAG", "홈 화면 가기");
+                break;
+            case R.id.chatIcon:
+                fragment = new FragmentChat();
+                transaction.replace(R.id.container, fragment);
+                transaction.commit();
+                Log.d("TAG", "채팅 하기");
+                break;
+            case R.id.boardIcon:
+                fragment = new FragmentBoard();
+                transaction.replace(R.id.container, fragment);
+                transaction.commit();
+                Log.d("TAG", "채팅 하기");
+                break;
+        }
 
-            transaction.replace(R.id.container, fragmentInfo);
-            transaction.commit();
-
-            Log.d("TAG", "내 정보 보기");
-
-        });
-
+        return true;
     }
 }

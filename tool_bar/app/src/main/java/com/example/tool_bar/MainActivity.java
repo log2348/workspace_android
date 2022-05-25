@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // xml 파일을 메모리에 올리는 동작 (객체)
+        // xml 파일을 메모리에 올리는 동작 (객체화)
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar, menu);
         return true;
