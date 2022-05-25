@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.3139240506329114" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/activity_home2.xml" value="0.36614583333333334" />
         <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/bottom_menu.xml" value="0.2942708333333333" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/botton_menu.xml" value="0.3515625" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/botton_toolbar.xml" value="0.2942708333333333" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/fragment_1.xml" value="0.2936708860759494" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/fragment_2.xml" value="0.2942708333333333" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/fragment_banner.xml" value="0.33" />
         <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/fragment_one.xml" value="0.29791666666666666" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/layout/fragment_two.xml" value="0.3515625" />
+        <entry key="..\:/workspace_android/myFragment/app/src/main/res/menu/bottom_menu.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>
