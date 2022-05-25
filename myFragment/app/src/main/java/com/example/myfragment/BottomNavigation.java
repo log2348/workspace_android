@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class BottomNavigation extends AppCompatActivity {
 
@@ -30,28 +31,15 @@ public class BottomNavigation extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        Fragment fragment;
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-
         switch (item.getItemId()) {
             case R.id.homeIcon:
-                fragment = new FragmentHome();
-                transaction.replace(R.id.container, fragment);
-                transaction.commit();
-                Log.d("TAG", "홈 화면 가기");
+                Toast.makeText(this, "홈 아이콘 선택", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.chatIcon:
-                fragment = new FragmentChat();
-                transaction.replace(R.id.container, fragment);
-                transaction.commit();
-                Log.d("TAG", "채팅 하기");
+                Toast.makeText(this, "채팅 아이콘 선택", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.boardIcon:
-                fragment = new FragmentBoard();
-                transaction.replace(R.id.container, fragment);
-                transaction.commit();
-                Log.d("TAG", "채팅 하기");
+                Toast.makeText(this, "게시판 아이콘 선택", Toast.LENGTH_SHORT).show();
                 break;
         }
 

@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
         // "https://picsum.photos/200/300?random=1" random에 숫자 넣으면 랜덤으로 이미지 반환
         Glide
                 .with(this)
-                .load("https://picsum.photos/200/300?random=1")
-                .circleCrop()
+                .load("@drawble/temp")
                 .into(imageView6);
 
         // 프로젝트에 있는 이미지들을 circleCrop() 처리 한다면 사용이 안됨 (CircleImageView 사용해서 처리하고 붙여야함)
