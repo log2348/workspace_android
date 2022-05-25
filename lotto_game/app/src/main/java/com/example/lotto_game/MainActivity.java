@@ -91,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
             int selectedNumber = numberPicker.getValue();
             Log.d(TAG, selectedNumber + "");
 
-            // 번호는 5개까지 선택 가능
-            if (pickerNumberSet.size() >= 5) {
-                Toast.makeText(this, "번호는 5개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+            // 번호는 6개까지 선택 가능
+            if (pickerNumberSet.size() > 5) {
+                Toast.makeText(this, "번호는 6개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
