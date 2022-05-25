@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/gImageView1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_background"
+                android:scaleType="centerCrop" />
+            <!--    수평 스크롤뷰 만들 때  ux 상 앞에 공백을 주진 않음-->
+            <ImageView
+                android:id="@+id/gImageView2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_background"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/gImageView3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_background"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/gImageView4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_background"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/gImageView5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_background"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/gImageView6"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_background"
+                android:scaleType="centerCrop" />
+
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+</LinearLayout>
