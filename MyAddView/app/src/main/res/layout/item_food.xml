@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp">
+
+    <ImageView
+        tools:background="@color/purple_200"
+        android:id="@+id/fruitImageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fruitNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Lemon"
+        app:layout_constraintBottom_toTopOf="@id/fruitPriceTextView"
+        app:layout_constraintStart_toEndOf="@+id/fruitImageView"
+        app:layout_constraintTop_toTopOf="@id/fruitImageView"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/fruitPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="가격 : 2000원"
+        app:layout_constraintBottom_toTopOf="@id/fruitCountTextView"
+        app:layout_constraintStart_toEndOf="@id/fruitImageView"
+        app:layout_constraintTop_toBottomOf="@+id/fruitNameTextView" />
+
+    <TextView
+        android:id="@+id/fruitCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="수량 : 10"
+        app:layout_constraintBottom_toBottomOf="@id/fruitImageView"
+        app:layout_constraintStart_toEndOf="@id/fruitImageView"
+        app:layout_constraintTop_toBottomOf="@id/fruitPriceTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
