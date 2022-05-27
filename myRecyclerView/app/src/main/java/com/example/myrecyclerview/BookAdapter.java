@@ -43,10 +43,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyBookViewHold
         Glide.with(context)
                 .load(book.getBookThumbnail())
                 .centerCrop()
-                .into(holder.bookThumnail);
+                .into(holder.bookThumbnail);
         holder.bookTitle.setText(book.getBookTitle());
         holder.bookAuthor.setText(book.getBookAuthor());
-        holder.bookDetail.setText(book.getDetail());
     }
 
     @Override
@@ -54,21 +53,18 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyBookViewHold
         return bookList.size();
     }
 
-
     public class MyBookViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView bookThumnail;
+        ImageView bookThumbnail;
         TextView bookTitle;
         TextView bookAuthor;
-        TextView bookDetail;
 
         public MyBookViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            bookThumnail = itemView.findViewById(R.id.bookThumbnmail);
-            bookTitle =  itemView.findViewById(R.id.title);
+            bookThumbnail = itemView.findViewById(R.id.bookThumbnmail);
+            bookTitle = itemView.findViewById(R.id.title);
             bookAuthor = itemView.findViewById(R.id.author);
-            bookDetail = itemView.findViewById(R.id.detailText);
 
             itemView.setOnClickListener(view -> {
 

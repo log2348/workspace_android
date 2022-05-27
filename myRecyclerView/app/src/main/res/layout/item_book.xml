@@ -21,8 +21,8 @@
         android:id="@+id/textContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginStart="10dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/detailText"
         app:layout_constraintHorizontal_weight="1.5"
@@ -31,12 +31,12 @@
 
         <TextView
             android:id="@+id/title"
-            android:textSize="15dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="title" />
+            android:layout_marginBottom="10dp"
+            android:text="title"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/author"
@@ -51,9 +51,8 @@
         android:id="@+id/detailText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="detail"
         android:gravity="end"
-        app:layout_constraintVertical_bias="0.8"
+        android:text="detail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
