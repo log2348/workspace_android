@@ -26,11 +26,12 @@ public class MainActivity extends AppCompatActivity {
         // 뷰를 위치시킬 컨테이너 가져오기
         LinearLayout container = findViewById(R.id.fruitContainer);
 
-        // Inflater 객체를 이용해서 xml 파일을 메모리에 올리고 어디에 올릴지 설정
+        // Inflater 생성
         LayoutInflater inflater = LayoutInflater.from(this); // new LayoutInflater() 와 같다
 
         // 람다식을 활용한 for문
         sampleData.forEach(fruit -> {
+            // Inflater 객체를 이용해서 xml 파일을 메모리에 올리고 어디에 올릴지 설정
             View itemView = inflater.inflate(R.layout.item_food, container, false);
 
             ImageView fruitImageView = itemView.findViewById(R.id.fruitImageView);

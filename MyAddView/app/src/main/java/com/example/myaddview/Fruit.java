@@ -14,6 +14,7 @@ public class Fruit {
         this.imageUrl = imageUrl;
         this.name = name;
         this.price = price;
+        this.count = count;
     }
 
     // 샘플데이터 생성
