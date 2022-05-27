@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentOne">
+    tools:context=".FragmentThree">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#A6FFF6"
         android:gravity="center"
-        android:text="FRAGMENT ONE"
+        android:text="3"
         android:textSize="20dp"
         android:textStyle="bold" />
 

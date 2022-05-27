@@ -5,10 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".FragmentTwo">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/teal_200"
+        android:gravity="center"
+        android:text="FRAGMENT TWO"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 </FrameLayout>
