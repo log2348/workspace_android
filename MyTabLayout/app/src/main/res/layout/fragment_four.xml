@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="#C3A1FF"
         android:gravity="center"
-        android:text="FOUR"
+        android:text="FRAGMENT FOUR"
         android:textSize="20dp"
         android:textStyle="bold" />
 
