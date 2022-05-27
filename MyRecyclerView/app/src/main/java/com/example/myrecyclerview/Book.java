@@ -61,7 +61,7 @@ public class Book {
         books.add(new Book("https://bookthumb-phinf.pstatic.net/cover/224/527/22452731.jpg?type=m1&udate=20220526", "더 찬스 The Chance", "김영익", "detail"));
         books.add(new Book("https://bookthumb-phinf.pstatic.net/cover/214/880/21488038.jpg?type=m1&udate=20220526", "마음의 법칙", "로버트 기요사키", "detail"));
         books.add(new Book("https://bookthumb-phinf.pstatic.net/cover/133/473/13347349.jpg?type=m1&udate=20220526", "부자아빠 가난한 아빠", "폴커 키츠", "detail"));
-        books.add(new Book("https://bookthumb-phinf.pstatic.net/cover/214/880/21488038.jpg?type=m1&udate=20220526", "마음의 법칙", "폴커 키츠", "detail"));
+        books.add(new Book("https://bookthumb-phinf.pstatic.net/cover/224/792/22479255.jpg?type=m1&udate=20220527", "밤의 끝을 알리는", "오건영", "detail"));
         books.add(new Book("https://bookthumb-phinf.pstatic.net/cover/212/625/21262555.jpg?type=m1&udate=20220526", "웰씽킹", "켈리 최", "detail"));
         return books;
     }

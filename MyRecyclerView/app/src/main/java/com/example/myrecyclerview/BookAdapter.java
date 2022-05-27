@@ -62,7 +62,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyBookViewHold
         TextView bookAuthor;
         TextView bookDetail;
 
-
         public MyBookViewHolder(@NonNull View itemView) {
             super(itemView);
 

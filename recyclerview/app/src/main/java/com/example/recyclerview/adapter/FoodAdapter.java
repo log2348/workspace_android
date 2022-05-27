@@ -76,7 +76,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
     }
 
     // 1. 내부 클래스 만들기
-    // 뷰 홀더를 미리 하나 만들어두고 일일이 했던 findVieById()를 재활용해서 쓰는 것 (성능 개선)
+    // 뷰 홀더를 미리 하나 만들어두고 일일이 했던 findViewById()를 재활용해서 쓰는 것 (성능 개선)
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView thumbnail;

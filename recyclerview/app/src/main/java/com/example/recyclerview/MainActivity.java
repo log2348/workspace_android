@@ -56,6 +56,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(foodAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 그리드 형태
-        recyclerView.hasFixedSize(); // 성능 개선 (빠르게 렌더링 가능)
+        recyclerView.setHasFixedSize(true); // 성능 개선 (빠르게 렌더링 가능)
     }
 }
