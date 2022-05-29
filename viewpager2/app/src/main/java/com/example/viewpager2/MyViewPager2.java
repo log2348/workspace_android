@@ -27,8 +27,14 @@ public class MyViewPager2 extends AppCompatActivity {
         images.add("https://cdn.pixabay.com/photo/2019/07/21/18/30/mountain-4353332_960_720.jpg");
 
         imageSlider = findViewById(R.id.myViewPager2);
+        
+        // 현재 보여지는 화면에서 몇 개의 페이지를 유지할지 설정
         imageSlider.setOffscreenPageLimit(2);
+
+        // 뷰페이저와 어댑터 연결
+        // 어댑터 생성시 이미지에 대한 정보를 넘겨서 뷰 컴포넌트에 이미지를 올린다
         imageSlider.setAdapter(new ViewPagerAdapter(this, images));
+
 
     }
 }
