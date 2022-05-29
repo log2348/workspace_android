@@ -139,7 +139,7 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/str_sales_detail"
                         android:textColor="@color/black"
-                        android:textSize="10dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="@id/salesIcon"
                         app:layout_constraintStart_toStartOf="@id/salesIcon"
                         app:layout_constraintTop_toBottomOf="@id/salesIcon" />
@@ -151,7 +151,7 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/str_phurchase_detail"
                         android:textColor="@color/black"
-                        android:textSize="10dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="@id/phurchaseIcon"
                         app:layout_constraintStart_toStartOf="@id/phurchaseIcon"
                         app:layout_constraintTop_toBottomOf="@id/phurchaseIcon" />
@@ -163,7 +163,7 @@
                         android:layout_marginTop="5dp"
                         android:text="관심목록"
                         android:textColor="@color/black"
-                        android:textSize="10dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="@id/wishListIcon"
                         app:layout_constraintStart_toStartOf="@id/wishListIcon"
                         app:layout_constraintTop_toBottomOf="@id/wishListIcon" />
