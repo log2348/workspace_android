@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="@string/str_menu_title"
+            android:text="나의 당근"
             android:textColor="@color/black"
             android:textSize="17dp"
             android:textStyle="bold"

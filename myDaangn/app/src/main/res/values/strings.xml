@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">myDaangn</string>
+    <string name="str_username">developer</string>
+    <string name="str_show_profile_btn">프로필 보기</string>
+    <string name="str_myTown">좌동 #00912</string>
+    <string name="str_sales_detail">판매내역</string>
+    <string name="str_phurchase_detail">구매내역</string>
+    <string name="str_authorize_town">동네 인증하기</string>
+    <string name="str_my_town_setting">내 동네 설정</string>
+    <string name="str_town_comments">동네생활 댓글</string>
+    <string name="str_show_all">모아보기</string>
+    <string name="str_business_profile">비즈프로필 관리</string>
+    <string name="str_write_town_board">동네생활 글</string>
+    <string name="str_regional_advertising">지역광고</string>
+    <string name="str_notification_keyword">키워드 알림</string>
+    <string name="str_menu_title">나의 당근</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_town_theme_list">동네생활 주제 목록</string>
 </resources>
