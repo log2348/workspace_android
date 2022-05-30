@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--    백그라운드 그라데이션 추가 -->
     <View
         android:id="@+id/indicatorsBackground"
         android:layout_width="0dp"
@@ -25,6 +26,7 @@
         app:layout_constraintEnd_toEndOf="@id/myViewPager2"
         app:layout_constraintStart_toStartOf="@id/myViewPager2" />
 
+    <!--    동그란 이미지 담는 컨테이너 -->
     <LinearLayout
         android:id="@+id/indicatorsContainer"
         android:layout_width="0dp"

@@ -1,9 +1,11 @@
 package com.example.viewpager2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.viewpager2.adapter.ViewPagerAdapter;
@@ -38,6 +40,46 @@ public class MyViewPager2 extends AppCompatActivity {
         // 어댑터 생성시 이미지에 대한 정보를 넘겨서 뷰 컴포넌트에 이미지를 올린다
         imageSlider.setAdapter(new ViewPagerAdapter(this, images));
 
+        imageSlider.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            // 페이지 선택될때 호출
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                setCurrentIndicator(position);
+            }
+        });
+        setupIndicators(images.size());
+    }
 
+    private void setupIndicators(int count) {
+        ImageView[] indicators = new ImageView[count];
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(16, 8, 16, 8);
+
+        for (int i = 0; i < indicators.length; i++) {
+            indicators[i] = new ImageView(this);
+            indicators[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.bg_indicator_inactive));
+
+            indicators[i].setLayoutParams(params);
+            indicatorsContainer.addView(indicators[i]);
+        }
+    }
+
+    private void setCurrentIndicator(int position) {
+        int childCount = indicatorsContainer.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            ImageView imageView = (ImageView) indicatorsContainer.getChildAt(i);
+            if (i == position) { // 선택되었을 때
+                imageView.setImageDrawable(ContextCompat.getDrawable(this,
+                        R.drawable.bg_indicator_active));
+            } else {
+                imageView.setImageDrawable(ContextCompat.getDrawable(this,
+                        R.drawable.bg_indicator_inactive));
+            }
+        }
     }
 }
