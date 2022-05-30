@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import com.example.viewpager2.adapter.ViewPagerAdapter;
 
@@ -13,6 +14,7 @@ public class MyViewPager2 extends AppCompatActivity {
 
     private ViewPager2 imageSlider;
     private ArrayList<String> images = new ArrayList<>();
+    private LinearLayout indicatorsContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,8 @@ public class MyViewPager2 extends AppCompatActivity {
         images.add("https://cdn.pixabay.com/photo/2016/10/25/11/37/snow-1768544__340.jpg");
         images.add("https://cdn.pixabay.com/photo/2019/07/21/18/30/mountain-4353332_960_720.jpg");
 
-        imageSlider = findViewById(R.id.myViewPager2);
+        indicatorsContainer = findViewById(R.id.indicatorsContainer);
+        imageSlider = findViewById(R.id.myViewPager2); // 뷰페이저 객체
         
         // 현재 보여지는 화면에서 몇 개의 페이지를 유지할지 설정
         imageSlider.setOffscreenPageLimit(2);
