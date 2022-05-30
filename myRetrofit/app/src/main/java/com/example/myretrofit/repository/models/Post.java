@@ -1,2 +1,4 @@
-package com.example.myretrofit.repository.models;public class Post {
+package com.example.myretrofit.repository.models;
+
+public class Post {
 }
