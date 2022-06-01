@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">mySecretDairy</string>
+    <string name="the_secret_dairy">The Secret Dairy</string>
+    <string name="my_secret_diary">My Secret Diary</string>
+</resources>
