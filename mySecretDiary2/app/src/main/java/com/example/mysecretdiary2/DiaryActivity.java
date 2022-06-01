@@ -22,7 +22,7 @@ public class DiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
 
-        diaryEditText = findViewById(R.id.daiaryEditText);
+        diaryEditText = findViewById(R.id.dairyEditText);
 
         SharedPreferences notePreferences = getSharedPreferences("diary", MODE_PRIVATE);
         diaryEditText.setText(notePreferences.getString("detail", ""));

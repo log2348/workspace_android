@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 if(passwordPreference.getString(KEY_PWD, "000").equals(passwordFromUser)) {
                     changePasswordMode = true;
                     Toast.makeText(this, "변경할 패스워드를 입력하세요", Toast.LENGTH_SHORT).show();
-                    changePasswordBtn.setBackgroundColor(Color.RED);
+                    changePasswordBtn.setBackgroundColor(Color.WHITE);
                 } else {
                     showErrorAlertDialog();
                 }
