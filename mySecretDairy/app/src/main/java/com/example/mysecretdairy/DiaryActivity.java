@@ -43,7 +43,7 @@ public class DiaryActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 Log.d("TAG", "char : " + s);
-                Log.d("TAG", "i : " + start);
+                Log.d("TAG", "start : " + start);
                 Log.d("TAG", "count : " + count);
                 Log.d("TAG", "after : " + after);
             }

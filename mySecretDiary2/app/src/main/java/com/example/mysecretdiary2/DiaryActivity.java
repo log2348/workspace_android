@@ -50,13 +50,13 @@ public class DiaryActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // 한 글자 입력되는 순간간
 
-               Log.d("onTextChanged", "char : " + s); // 입력 문자
+                Log.d("onTextChanged", "char : " + s); // 입력 문자
                 Log.d("onTextChanged", "start : " + start);
                 Log.d("onTextChanged", "before : " + before); // 그 전 글자 수
                 Log.d("onTextChanged", "count : " + count); // 입력된 글자 수
                 Log.d("onTextChanged", "");
 
-                handler.removeCallbacks(runnable);
+                //handler.removeCallbacks(runnable);
                 handler.postDelayed(runnable, 500);
             }
 
