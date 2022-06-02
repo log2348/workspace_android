@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/movie"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_movie_24"
+        android:title="movie"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/info"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="movie"
+        app:showAsAction="ifRoom" />
+
+</menu>
