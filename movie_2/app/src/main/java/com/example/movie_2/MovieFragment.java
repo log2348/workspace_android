@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 
 import com.example.movie_2.databinding.FragmentMovieBinding;
 
+// 프래그먼트 -> 재사용성
 public class MovieFragment extends Fragment {
 
     private FragmentMovieBinding binding;
     private static final String TAG = MovieFragment.class.getName();
+
 
     public MovieFragment() {
         // Required empty public constructor
