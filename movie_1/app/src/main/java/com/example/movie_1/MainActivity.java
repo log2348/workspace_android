@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         // 3. 연결 ( findViewById() )
         setContentView(binding.getRoot());
-        //binding.temp1.setText("뷰 바인딩 사용했어요 ~");
+        // binding.temp1.setText("뷰 바인딩 사용했어요 ~");
         replaceFragment(FragmentType.MOVIE);
         addBottomNavigationListener();
     }
