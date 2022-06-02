@@ -9,22 +9,14 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/myViewPager2"
         android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:layout_margin="20dp"
         android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/detailText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--    백그라운드 그라데이션 추가 -->
-    <View
-        android:id="@+id/indicatorsBackground"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@id/myViewPager2"
-        app:layout_constraintEnd_toEndOf="@id/myViewPager2"
-        app:layout_constraintStart_toStartOf="@id/myViewPager2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <!--    동그란 이미지 담는 컨테이너 -->
     <LinearLayout
@@ -33,14 +25,41 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@id/indicatorsBackground"
-        app:layout_constraintEnd_toEndOf="@id/indicatorsBackground"
-        app:layout_constraintStart_toStartOf="@id/indicatorsBackground"
-        app:layout_constraintTop_toTopOf="@id/indicatorsBackground" />
+        app:layout_constraintBottom_toBottomOf="@id/indicatorBackground"
+        app:layout_constraintEnd_toEndOf="@id/indicatorBackground"
+        app:layout_constraintStart_toStartOf="@id/indicatorBackground"
+        app:layout_constraintTop_toTopOf="@id/indicatorBackground" />
+
+    <View
+        android:id="@+id/indicatorBackground"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradient_image_slider"
+        app:layout_constraintBottom_toBottomOf="@id/myViewPager2"
+        app:layout_constraintEnd_toEndOf="@id/myViewPager2"
+        app:layout_constraintStart_toStartOf="@id/myViewPager2" />
 
     <TextView
+        android:id="@+id/nameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="주우재 Joo Woo Jae"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/detailText"
+        app:layout_constraintStart_toStartOf="@id/indicatorsContainer"
+        app:layout_constraintTop_toBottomOf="@id/indicatorsContainer" />
+
+    <TextView
+        android:id="@+id/detailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="15dp"
+        android:text="2013년에 모델로 데뷔하였고, 2015년에 유세윤의 '우리 싸웠어', '중 2병' 뮤직비디오에 출연하면서 방송인으로서 활동을 시작했다. 이후 문제적 남자에서 주목받기 시작하며 여러 프로그램에 섭외되고 예능에서 활발한 활동을 보이고 있다.2016년에 복면가왕 45차 경연에서 도레미파솔로시죠 피아노맨이라는 가명으로 참가했다. 참고로 복면가왕 뿐만 아니라 그가 예능에 나올 때마다 제작진들이 김구라의 추천으로 섭외했다고 한다. 그 덕분에 그는 김구라를 예능 아버지라고 여길 정도. 출연 계기는 라디오 스타에서 윤종신 덕후 컨셉으로 나왔다가, 김구라에게 퇴짜 맞았는데 이 때문에 김구라에게 자신도 웃길 수 있다는 것을 인정받기 위해 나왔다고 밝혔다. 그 뒤 대기실에선 판정단인 나연과 쯔위에게 선택받지 못한 걸 아쉬워하면서도, 그래도 좋다고 말하면서 68차 경연에서 판정단으로 참여했다.그 외에도 힙합의 민족2, 호구의 연애, 연애의 참견 등에 출연하면서 다양한 방송 활동과 모델 일을 병행하고 있으며, 최근에는 본인과 스튜디오 에피소드가 같이 운영하는 유튜브 오늘의 주우재 채널에서도 활동 중이다."
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

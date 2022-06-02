@@ -23,16 +23,14 @@ public class MyViewPager2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_view_pager2);
 
-        images.add("https://cdn.pixabay.com/photo/2019/11/23/03/08/valley-4646114_960_720.jpg");
-        images.add("https://cdn.pixabay.com/photo/2019/04/08/16/49/blooming-4112348_960_720.jpg");
-        images.add("https://cdn.pixabay.com/photo/2021/07/19/22/07/mountains-6479150_960_720.jpg");
-        images.add("https://cdn.pixabay.com/photo/2019/06/24/16/43/mountain-4296464_960_720.jpg");
-        images.add("https://cdn.pixabay.com/photo/2016/10/25/11/37/snow-1768544__340.jpg");
-        images.add("https://cdn.pixabay.com/photo/2019/07/21/18/30/mountain-4353332_960_720.jpg");
+        images.add("https://postfiles.pstatic.net/MjAyMjA0MjNfMjE5/MDAxNjUwNzEyNzA3ODM1.Qaf8aU-WnVUv61z3ukBaT6LCl5m_QJa6Hgs_sXb5hXYg.hXfrWuN7GYYUMLdYrYwwobJjrkTW5MKrsvwtPCbqo5Mg.PNG.sw20woo/image.png?type=w773");
+        images.add("https://postfiles.pstatic.net/MjAyMjAyMjBfMjAw/MDAxNjQ1MzU4MjA5NDQz.vC9tYW6r0f4Di8PvObiHy-xT5J3Md3VThCSxpdvw0rog.sp2zZGkNaK1d5ALMCD6lFEildc4ZQcPE1YjpdbgnWkQg.JPEG.leehyne/lyh-024.jpg?type=w966");
+        images.add("https://postfiles.pstatic.net/MjAyMjAyMjBfNzgg/MDAxNjQ1MzU4MjA3Njg0.xQ6M9gY0SHEUXIp2dO8_JOW_ZEdkxAx91mc3z_6nQ9cg.fyC7Pyilhx74KjhRMqiHX4EzhdPhZbUVX453ZQDie38g.JPEG.leehyne/lyh-007.jpg?type=w966");
+        images.add("https://postfiles.pstatic.net/MjAyMjA0MjNfMTgx/MDAxNjUwNzEyNjI3Nzk2.bcoAIOoha1_wJDtgdx1fBO1bEqh3oqmCJNoft1REHwYg.CL4cnWBeL6fyHU5ZL1FM6JTFdHCv9jL70Uk3t1NDvWAg.PNG.sw20woo/image.png?type=w773");
 
         indicatorsContainer = findViewById(R.id.indicatorsContainer);
         imageSlider = findViewById(R.id.myViewPager2); // 뷰페이저 객체
-        
+
         // 현재 보여지는 화면에서 몇 개의 페이지를 유지할지 설정
         imageSlider.setOffscreenPageLimit(2);
 
