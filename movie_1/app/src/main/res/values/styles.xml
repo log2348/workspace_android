@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--스타일의 변수화-->
+<resources>
+
+    <style name="info_text_style" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/info</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>

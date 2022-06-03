@@ -2,6 +2,7 @@ package com.example.movie_1.adapter;
 
 // 내부 클래스 먼저 만들기
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.movie_1.R;
+import com.example.movie_1.interfaces.OnMovieItemClicked;
 import com.example.movie_1.models.Movie;
 
 import java.util.ArrayList;
@@ -25,13 +27,30 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
 
     private List<Movie> list = new ArrayList<>();
+    private OnMovieItemClicked onMovieItemClicked;
+
+    public OnMovieItemClicked getOnMovieItemClicked() {
+        return onMovieItemClicked;
+    }
+
+    public void setOnMovieItemClicked(OnMovieItemClicked onMovieItemClicked) {
+        this.onMovieItemClicked = onMovieItemClicked;
+    }
 
     // 통신 배우기 전 -> 생성자에서 데이터를 전달 받아서 화면을 구성
     // 통신이기 때문에 화면을 그리는 시점보다 더 늦게 데이터가 도달할 수 있다.
 
+    // 그 전에 호출된 데이터들이 스크롤바 내리고 다시 올렸을 때 없어지는(교체되는) 이유
     public void addItemList(List<Movie> list) {
         this.list = list;
         // 데이터가 변경되었으면(알려주면) 화면을 다시 그려줌
+        notifyDataSetChanged();
+    }
+
+    // 교체말고 append 해야한다
+    public void addItem(List<Movie> addList) {
+        // 그 전 데이터들도 넣어줘야함
+        this.list.addAll(list.size(), addList); // 기존에 호출되어있던 리스트에 네트워크 통신으로 넘어온 데이터 추가해주는 거
         notifyDataSetChanged();
     }
 
@@ -50,6 +69,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
         // view holder 안에서 세팅하는 타입 (메소드 만들기)
         holder.setItem(movie);
+        holder.itemView.setOnClickListener(view -> {
+            onMovieItemClicked.selectedItem(movie);
+        });
     }
 
     @Override
@@ -89,6 +111,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
                     .placeholder(R.drawable.round_image)
                     .transform(new FitCenter(), new RoundedCorners(20))
                     .into(posterIv);
+
+            itemView.setOnClickListener(view -> {
+                Log.d("TAG", "" + view.getContext());
+            });
         }
 
     } // end of inner class
