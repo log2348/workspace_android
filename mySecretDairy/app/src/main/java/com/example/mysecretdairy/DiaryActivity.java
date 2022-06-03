@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class DiaryActivity extends AppCompatActivity {
 
-    EditText diaryEditText;
+    private EditText diaryEditText;
 
     // 메시지 큐 (First In First Out, 선입선출)
     Handler handler = new Handler(Looper.getMainLooper());
