@@ -14,10 +14,12 @@ import android.view.ViewGroup;
 
 import com.example.movie_1.adapter.MovieAdapter;
 import com.example.movie_1.databinding.FragmentMovieBinding;
+import com.example.movie_1.interfaces.OnChangeToolbarType;
 import com.example.movie_1.interfaces.OnMovieItemClicked;
 import com.example.movie_1.models.Movie;
 import com.example.movie_1.models.YtsData;
 import com.example.movie_1.repository.MovieService;
+import com.example.movie_1.utils.Define;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +46,22 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
     // 스크롤시 중복 이벤트 발생 해결 방안
     private boolean preventDuplicateScrollEvent = true;
 
-    public static MovieFragment newInstance() {
-        MovieFragment fragment = new MovieFragment();
-        return fragment;
+    private OnChangeToolbarType onChangeToolbarType;
+
+    private static MovieFragment movieFragment;
+
+    private boolean isFirstLoading = true;
+
+    private MovieFragment(OnChangeToolbarType onChangeToolbarType) {
+        this.onChangeToolbarType = onChangeToolbarType;
+    }
+
+    public static MovieFragment getInstance(OnChangeToolbarType onChangeToolbarType) {
+        // 위는 메서드 이다 -> static 메서드를 통해서 new MovieFragment() 하는 것
+        if (movieFragment == null) {
+            movieFragment = new MovieFragment(onChangeToolbarType);
+        }
+        return movieFragment;
     }
 
     @Override
@@ -57,7 +72,7 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
         movieService = MovieService.retrofit.create(MovieService.class);
     }
 
-    // 화면 전환했다가 돌아오면 호출됨
+    // 화면 전환했다가 돌아오면 호출됨 (화면이 그려질 때)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) { // 화면을 그릴 때
@@ -66,8 +81,14 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
         // 리사이클러뷰 만들어주기
         // 아직 없음 (안드로이드는 입체적으로 생각해야 한다)
         setupRecyclerView(list);
-        requestMoviesData(currentPageNumber);
-
+        if (isFirstLoading) {
+            requestMoviesData(currentPageNumber);
+        } else {
+            setVisibilityProgressBar(View.GONE);
+        }
+        onChangeToolbarType.onSetupType(Define.PAGE_TITLE_MOVIE);
+        // NullPointerException -> 주소를 연결 (누가 내 메서드를 콜백 받을지 연결)
+        // 연결 방법은 2가지 (1) 생성자, (2) 메서드 (OOP의 핵심개념)
         return binding.getRoot();
     }
 
@@ -81,8 +102,7 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
                     @Override
                     public void onResponse(Call<YtsData> call, Response<YtsData> response) {
                         if (response.isSuccessful()) {
-                            // 통신을 통해서 데이터를 넘겨 받았으면 adapter에 데이터를 전달해서
-                            // 화면을 갱신 처리
+                            // 통신을 통해서 데이터를 넘겨 받았으면 adapter에 데이터를 전달해서 화면을 갱신 처리
                             List<Movie> list = response.body().getData().getMovies();
 
                             // 어댑터 메소드 호출
@@ -91,6 +111,7 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
 
                             // 통신 끝나면 true값으로 초기화 시켜 줘야 업데이트됨
                             preventDuplicateScrollEvent = true;
+                            isFirstLoading = false;
                             setVisibilityProgressBar(View.GONE);
                         }
                     }
@@ -109,8 +130,8 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
         // 리사이클러뷰 준비물
         // 1. 어댑터
         movieAdapter = new MovieAdapter();
-        movieAdapter.addItemList(movieList);
         movieAdapter.setOnMovieItemClicked(this);
+        movieAdapter.initItemList(movieList);
 
         // 2. 매니저
         LinearLayoutManager manager = new LinearLayoutManager(getContext());

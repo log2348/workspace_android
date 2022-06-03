@@ -41,7 +41,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     // 통신이기 때문에 화면을 그리는 시점보다 더 늦게 데이터가 도달할 수 있다.
 
     // 그 전에 호출된 데이터들이 스크롤바 내리고 다시 올렸을 때 없어지는(교체되는) 이유
-    public void addItemList(List<Movie> list) {
+    public void initItemList(List<Movie> list) {
         this.list = list;
         // 데이터가 변경되었으면(알려주면) 화면을 다시 그려줌
         notifyDataSetChanged();
