@@ -180,7 +180,7 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
     @Override
     public void selectedItem(Movie movie) {
         Intent intent = new Intent(getContext(), MovieDetailActivity.class);
-        // 직렬화란 object -> byte 단위로 변환해서 처리
+        // 직렬화 : object -> byte 단위로 변환
         intent.putExtra(MovieDetailActivity.PARAM_NAME_1, movie);
         startActivity(intent);
     }

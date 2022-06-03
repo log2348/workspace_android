@@ -29,10 +29,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     private List<Movie> list = new ArrayList<>();
     private OnMovieItemClicked onMovieItemClicked;
 
-    public OnMovieItemClicked getOnMovieItemClicked() {
-        return onMovieItemClicked;
-    }
-
     public void setOnMovieItemClicked(OnMovieItemClicked onMovieItemClicked) {
         this.onMovieItemClicked = onMovieItemClicked;
     }

@@ -12,13 +12,15 @@ import android.webkit.WebView;
 
 import com.example.movie_1.databinding.ActivityMainBinding;
 import com.example.movie_1.interfaces.OnChangeToolbarType;
+import com.example.movie_1.interfaces.OnPassWebView;
 import com.example.movie_1.utils.Define;
 import com.example.movie_1.utils.FragmentType;
 
-public class MainActivity extends AppCompatActivity implements OnChangeToolbarType {
+public class MainActivity extends AppCompatActivity implements OnChangeToolbarType, OnPassWebView {
     // 뷰 바인딩 생성 방법
     // 1. 안드로이드가 만들어준 객체 선언
     ActivityMainBinding binding;
+    WebView webView; // <-- InfoFragment 생성하는 WebView 객체 주소 전달 받을 예정
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements OnChangeToolbarTy
             fragment = MovieFragment.getInstance(this); // MOVIE TAG
         } else {
             fragment = InfoFragment.getInstance(this); // INFO TAG
+            if (fragment != null) {
+                InfoFragment infoFragment = (InfoFragment) fragment;
+                infoFragment.setOnPassWebView(this); // 주소 연결
+            }
         }
 
         // tag -> 문자열로 이름 지어서 구분 해놓는 녀석
@@ -72,9 +78,12 @@ public class MainActivity extends AppCompatActivity implements OnChangeToolbarTy
                 .findFragmentByTag(FragmentType.INFO.toString()).getTag();
 
         if (fragmentTag.equals(FragmentType.INFO.toString())) {
-            //replaceFragment(FragmentType.MOVIE);
-            View view = binding.bottomNavigation.findViewById(R.id.movie);
-            view.callOnClick();
+            if (webView.canGoBack()) {
+                webView.goBack();
+            } else {
+                View view = binding.bottomNavigation.findViewById(R.id.movie);
+                view.callOnClick();
+            }
         } else {
             super.onBackPressed();
 
@@ -93,5 +102,10 @@ public class MainActivity extends AppCompatActivity implements OnChangeToolbarTy
             binding.topAppbar.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    public void onPassWebViewObj(WebView webView) {
+        this.webView = webView;
     }
 }
