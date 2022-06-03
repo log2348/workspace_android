@@ -19,8 +19,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/bottomLinear"
         android:layout_width="match_parent"
@@ -33,6 +32,7 @@
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/container_upline"
             app:itemIconTint="@drawable/bottom_navigation_menu_selector"
             app:itemTextColor="@drawable/bottom_navigation_menu_selector"
             app:labelVisibilityMode="labeled"
