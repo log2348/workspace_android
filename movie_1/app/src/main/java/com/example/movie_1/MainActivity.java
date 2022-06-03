@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 
 import com.example.movie_1.databinding.ActivityMainBinding;
 import com.example.movie_1.interfaces.OnChangeToolbarType;
@@ -84,15 +85,13 @@ public class MainActivity extends AppCompatActivity implements OnChangeToolbarTy
     public void onSetupType(String title) {
         // 프래그먼트에서 호출하면 (onSetupType)
         Log.d("TAG", "title : " + title);
-        /*
+
         if (title.equals(Define.PAGE_TITLE_MOVIE)) {
             binding.topAppbar.setTitle(title);
             binding.topAppbar.setVisibility(View.VISIBLE);
         } else if (title.equals(Define.PAGE_TITLE_INFO)) {
             binding.topAppbar.setVisibility(View.GONE);
         }
-         */
-        binding.topAppbar.setTitle(title);
-        binding.topAppbar.setVisibility(View.VISIBLE);
+
     }
 }
