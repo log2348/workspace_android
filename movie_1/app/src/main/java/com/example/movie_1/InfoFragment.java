@@ -75,7 +75,7 @@ public class InfoFragment extends Fragment {
             }
         });
 
-        // 웹뷰는 기본적으로 자바 스크립트가 허용 안되어 있음 -> 자바 스크립트 허용 코드 작성
+        // 웹뷰는 기본적으로 자바 스크립트가 허용 안되어있음 -> 코드로 자바 스크립트 허용
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         onPassWebView.onPassWebViewObj(webView);

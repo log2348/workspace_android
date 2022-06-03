@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
 
         if(type == FragmentType.MOVIE) {
-            fragment = MovieFragment.newInstance();
+            fragment = MovieFragment.getInstance();
         } else {
             fragment = InfoFragment.newInstance();
         }

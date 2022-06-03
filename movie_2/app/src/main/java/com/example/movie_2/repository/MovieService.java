@@ -17,7 +17,7 @@ public interface MovieService {
             .build();
 
     @GET("list_movies.json")
-    Call<YtsData> repoContributors(
+    Call<YtsData> getMovieInfo(
             @Query("sort_by") String sort_by,
             @Query("limit") int limit,
             @Query("page") int page
