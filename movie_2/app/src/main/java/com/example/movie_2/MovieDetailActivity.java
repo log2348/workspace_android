@@ -24,7 +24,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         if (getIntent() != null) {
-            movie = (Movie) getIntent().getSerializableExtra(PARAM_NAME_1); // 직렬화된 객체 다운캐스팅
+            movie = (Movie) getIntent().getSerializableExtra(PARAM_NAME_1); // 직렬화된 객체 다운캐스팅 (다시 Object로 바꿔줌)
             initData();
         }
     }

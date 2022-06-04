@@ -68,6 +68,7 @@ public class InfoFragment extends Fragment {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                binding.circularProgressIndicatorInfo.setVisibility(View.GONE);
             }
         });
 

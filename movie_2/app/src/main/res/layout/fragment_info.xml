@@ -5,16 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".InfoFragment">
 
+    <!-- FragmentLayout이기때문에 웹뷰가 먼저 깔려야 progressindicator가 보인다 -->
+    <WebView
+        android:id="@+id/mWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/circularProgressIndicatorInfo"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:indeterminate="true" />
-
-    <WebView
-        android:id="@+id/mWebView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </FrameLayout>
