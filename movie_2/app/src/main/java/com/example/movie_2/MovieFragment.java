@@ -11,13 +11,16 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.movie_2.adapter.MovieAdapter;
 import com.example.movie_2.databinding.FragmentMovieBinding;
 import com.example.movie_2.interfaces.OnMovieItemViewClicked;
+import com.example.movie_2.interfaces.OnTopAppBarTitleChanged;
 import com.example.movie_2.models.Movie;
 import com.example.movie_2.models.YtsData;
 import com.example.movie_2.repository.MovieService;
+import com.example.movie_2.utils.Define;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,19 +43,20 @@ public class MovieFragment extends Fragment implements OnMovieItemViewClicked {
     private static MovieFragment movieFragment;
 
     private int currentPageNumber = 1;
-
     private boolean preventDuplicateScrollEvent = true;
-
     private boolean isFirstLoading = true;
 
-    public MovieFragment() {
-        // Required empty public constructor
+    private OnTopAppBarTitleChanged onTopAppBarTitleChanged; // 이대로 두면 NullPointerException 발생
+
+    // 콜리(호출자)는 콜백 받는 객체의 주소값을 알고 있어야 한다. (생성자 또는 setter 메서드로 처리)
+    public MovieFragment(OnTopAppBarTitleChanged onTopAppBarTitleChanged) {
+        this.onTopAppBarTitleChanged = onTopAppBarTitleChanged;
     }
 
     // 싱글톤 패턴
-    public static MovieFragment getInstance() {
+    public static MovieFragment getInstance(OnTopAppBarTitleChanged onTopAppBarTitleChanged) {
         if (movieFragment == null) {
-            movieFragment = new MovieFragment();
+            movieFragment = new MovieFragment(onTopAppBarTitleChanged);
         }
         return movieFragment;
     }
@@ -60,6 +64,8 @@ public class MovieFragment extends Fragment implements OnMovieItemViewClicked {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 엑티비티 실행시 한 번만 호출
+        movieService = MovieService.retrofit.create(MovieService.class);
     }
 
     @Override
@@ -70,6 +76,14 @@ public class MovieFragment extends Fragment implements OnMovieItemViewClicked {
         // 리사이클러뷰 만들기
         setupRecyclerView(list);
 
+        if(isFirstLoading) {
+            requestMoviesData(currentPageNumber);
+        } else {
+            setVisibleProgressBar(View.GONE);
+        }
+
+        // 화면 그려질때마다 콜백 메서드 호출
+        onTopAppBarTitleChanged.setTopAppBar(Define.PAGE_TITLE_MOVIE);
 
         return binding.getRoot();
     }
@@ -78,6 +92,7 @@ public class MovieFragment extends Fragment implements OnMovieItemViewClicked {
 
         int ITEM_LIMIT = 10;
 
+        // 통신요청
         movieService.getMovieInfo("rating", ITEM_LIMIT, requestPage)
                 .enqueue(new Callback<YtsData>() {
                     @Override
@@ -85,17 +100,20 @@ public class MovieFragment extends Fragment implements OnMovieItemViewClicked {
                         if (response.isSuccessful()) {
                             List<Movie> list = response.body().getData().getMovies();
 
+                            // 어댑터 메소드 호출 -> 리사이클러뷰에 아이템 담기
                             movieAdapter.addItem(list);
                             currentPageNumber++;
 
                             preventDuplicateScrollEvent = true;
-
+                            isFirstLoading = false;
+                            setVisibleProgressBar(View.GONE);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<YtsData> call, Throwable t) {
-
+                        setVisibleProgressBar(View.GONE);
+                        Toast.makeText(binding.getRoot().getContext(), "네트워크 연결이 불안정합니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -113,6 +131,7 @@ public class MovieFragment extends Fragment implements OnMovieItemViewClicked {
 
         // 3. xml 파일에 리사이클러뷰 컴포넌트 세팅
         RecyclerView recyclerView = binding.recyclerView;
+        recyclerView.setAdapter(movieAdapter);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
@@ -129,7 +148,7 @@ public class MovieFragment extends Fragment implements OnMovieItemViewClicked {
 
                     if(lastVisibleItemPosition == itemTotalCount) {
                         if (currentPageNumber != 1) {
-
+                            preventDuplicateScrollEvent = false;
                             requestMoviesData(currentPageNumber);
                         }
                     }
@@ -141,8 +160,13 @@ public class MovieFragment extends Fragment implements OnMovieItemViewClicked {
     @Override
     public void selectedItem(Movie movie) {
         Intent intent = new Intent(getContext(), MovieDetailActivity.class);
-        // Movie 클래스 직렬화
+        // Movie 클래스 직렬화해서 매개변수로 세팅
         intent.putExtra(MovieDetailActivity.PARAM_NAME_1, movie);
         startActivity(intent);
+    }
+
+    // 로딩화면(Bar) 세팅
+    private void setVisibleProgressBar(int visible) {
+        binding.circularProgressIndicator.setVisibility(visible);
     }
 }

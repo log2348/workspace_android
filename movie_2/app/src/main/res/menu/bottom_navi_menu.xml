@@ -13,7 +13,7 @@
         android:id="@+id/info"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_info_24"
-        android:title="movie"
+        android:title="info"
         app:showAsAction="ifRoom" />
 
 </menu>

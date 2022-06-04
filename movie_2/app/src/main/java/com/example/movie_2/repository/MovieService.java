@@ -16,6 +16,7 @@ public interface MovieService {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
+    // GET 메서드 -> 데이터 조회
     @GET("list_movies.json")
     Call<YtsData> getMovieInfo(
             @Query("sort_by") String sort_by,

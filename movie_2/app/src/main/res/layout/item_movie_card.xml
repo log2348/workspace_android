@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+    <!-- 리사이클뷰 객체 넣을때 최상위 부모 height wrap_content 처리 반드시 해야함 -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,12 +12,11 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/primary_color"
-            app:cardCornerRadius="10dp">
+            android:layout_height="130dp"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="20dp"
+            app:cardBackgroundColor="#EDEDED">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                     android:ellipsize="end"
                     android:gravity="bottom|end"
                     android:maxLines="2"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toTopOf="@id/ratingTv"
                     app:layout_constraintEnd_toEndOf="@id/guideline2"
                     app:layout_constraintStart_toEndOf="@id/guideline"
@@ -59,7 +59,7 @@
                     app:layout_constraintEnd_toEndOf="@id/guideline2"
                     app:layout_constraintTop_toBottomOf="@id/movieTitleTv"
                     tools:text="9.9"
-                    tools:textColor="@color/white" />
+                    tools:textColor="@color/black" />
 
                 <RatingBar
                     android:id="@+id/ratingBar"
@@ -87,6 +87,6 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/round_image" />
+        tools:src="@drawable/round_image" />
 
 </FrameLayout>

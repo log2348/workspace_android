@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Movie"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/white" />
 
     <LinearLayout
         android:id="@+id/mainContainer"
@@ -37,12 +37,11 @@
         app:layout_constraintTop_toBottomOf="@id/mainContainer">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:itemIconSize="25dp"
             app:menu="@menu/bottom_navi_menu" />
-
 
     </LinearLayout>
 
