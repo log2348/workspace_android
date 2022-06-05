@@ -76,4 +76,5 @@ public class InfoFragment extends Fragment {
         webSettings.setJavaScriptEnabled(true);
         onWebViewBackPressed.onPassWebViewPage(webView);
     }
+
 }

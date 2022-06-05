@@ -35,6 +35,10 @@ public class MovieDetailActivity extends AppCompatActivity {
         binding.runTimeTextView.setText("Running Time : " + movie.getRuntime());
 
         Glide.with(this)
+                .load(movie.getBackgroundImage())
+                .into(binding.backgroundPosterImageView);
+
+        Glide.with(this)
                 .load(movie.getMediumCoverImage())
                 .into(binding.posterImageView);
     }

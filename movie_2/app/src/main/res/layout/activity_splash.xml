@@ -11,7 +11,7 @@
         android:id="@+id/splashTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MOVIE"
+        android:text="YTS MOVIE"
         android:textColor="@color/white"
         android:textSize="50dp"
         android:textStyle="bold"

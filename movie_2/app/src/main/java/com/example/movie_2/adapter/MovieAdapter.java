@@ -98,7 +98,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
             Glide.with(posterIv.getContext())
                     .load(movie.getMediumCoverImage())
-                    .placeholder(R.drawable.round_image)
                     .transform(new FitCenter(), new RoundedCorners(20))
                     .into(posterIv);
 

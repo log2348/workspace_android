@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -18,7 +19,7 @@ import com.example.movie_2.utils.FragmentType;
 public class MainActivity extends AppCompatActivity implements OnTopAppBarTitleChanged, OnWebViewBackPressed {
 
     private ActivityMainBinding binding;
-    private WebView webView; // info 프래그먼트에서 생성하는 웹뷰 객체 넣을 변수
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +36,13 @@ public class MainActivity extends AppCompatActivity implements OnTopAppBarTitleC
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
-        if(type == FragmentType.MOVIE) {
+        if (type == FragmentType.MOVIE) {
             fragment = MovieFragment.getInstance(this);
         } else {
             fragment = InfoFragment.getInstance(this);
-            if(fragment != null) {
-                // 콜백
+            if (fragment != null) {
                 InfoFragment infoFragment = (InfoFragment) fragment;
+                // 콜백
                 infoFragment.setOnWebViewBackPressed(this);
             }
         }
@@ -66,10 +67,10 @@ public class MainActivity extends AppCompatActivity implements OnTopAppBarTitleC
 
     @Override
     public void setTopAppBar(String title) {
-        if(title.equals(Define.PAGE_TITLE_MOVIE)) {
+        if (title.equals(Define.PAGE_TITLE_MOVIE)) {
             binding.topAppBar.setTitle("MOVIE");
             binding.topAppBar.setVisibility(View.VISIBLE); // Visible 처리 안 하면 안 보임
-        } else if (title.equals(Define.PAGE_TITLE_INFO)){
+        } else if (title.equals(Define.PAGE_TITLE_INFO)) {
             // 상단 바 사라지도록
             binding.topAppBar.setVisibility(View.GONE);
         }
@@ -78,25 +79,24 @@ public class MainActivity extends AppCompatActivity implements OnTopAppBarTitleC
     @Override
     public void onBackPressed() {
         // 뒤로가기 버튼 눌렀을 때 호출되는 메서드
-        // info 프래그먼트나 movie 프래그먼트나 첫 화면에서 뒤로가기 하면 나가기
+        // Acrivity가 내부적으로 구현하는 메서드
+        // 뒤로가기 버튼 눌렀을 때 개발자가 화면을 뒤로가는 기능 뿐만 아니라 다른 기능도 구현할 수 있음
 
-        String fragmentTag = getSupportFragmentManager()
-                .findFragmentByTag(FragmentType.INFO.toString()).getTag();
+        String fragmentTag = getSupportFragmentManager().findFragmentByTag(FragmentType.INFO.toString()).getTag();
 
-        if(fragmentTag.equals(FragmentType.INFO.toString())) {
+        if (fragmentTag.equals(FragmentType.INFO.toString())){
             if (webView.canGoBack()) {
                 webView.goBack();
+                Log.d("TAG", "onBackPressed()");
+            } else {
+                View view = binding.bottomNavigation.findViewById(R.id.movie);
+                view.callOnClick();
             }
         }
-
-        super.onBackPressed();
     }
 
     @Override
     public void onPassWebViewPage(WebView webView) {
         this.webView = webView;
-        if (webView.canGoBack()) {
-            webView.goBack();
-        }
     }
 }
